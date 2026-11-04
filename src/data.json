@@ -1789,5 +1789,58 @@
    "wander-guerra"
   ],
   "note": ""
+ },
+ "warmup": {
+  "tpl": "rapido",
+  "matchId": "cl-p06",
+  "blocks": [
+   {
+    "k": 1,
+    "min": 3,
+    "items": [
+     "Trote suave ida y vuelta",
+     "Trote con apertura y cierre de cadera",
+     "Desplazamiento lateral y carioca suave",
+     "Skipping bajo"
+    ]
+   },
+   {
+    "k": 2,
+    "min": 4,
+    "items": [
+     "Balanceo de pierna adelante-atrás y lateral ×8 por pierna",
+     "Zancada con rotación de tronco ×4 por lado",
+     "Tobillo: rodilla adelante ×8 por lado"
+    ]
+   },
+   {
+    "k": 3,
+    "min": 4,
+    "items": [
+     "Puente de glúteo ×12",
+     "Plancha lateral 15 s por lado",
+     "Copenhague corto ×4 por lado",
+     "Elevación de talones ×15"
+    ]
+   },
+   {
+    "k": 4,
+    "min": 5,
+    "items": [
+     "Pases en parejas con desplazamiento",
+     "Rondo 5 vs 2"
+    ]
+   },
+   {
+    "k": 5,
+    "min": 3,
+    "items": [
+     "Aceleraciones de 20 m al 60%, 75% y 85%",
+     "2 sprints de 10 m al 90%",
+     "Agua e indicaciones"
+    ]
+   }
+  ],
+  "note": ""
  }
 }
