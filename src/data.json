@@ -1,0 +1,1705 @@
+{
+ "team": "Cracks Dorados",
+ "liga": "Liga Independiente de Fútbol",
+ "coach": "Patricio Maldonado",
+ "tournaments": [
+  {
+   "id": "ap26",
+   "name": "Apertura 2026"
+  },
+  {
+   "id": "cl26",
+   "name": "Clausura 2026"
+  }
+ ],
+ "current": "cl26",
+ "players": [
+  {
+   "id": "esteban",
+   "name": "Esteban",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "cone",
+   "name": "Cone",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "luisfe-navarro",
+   "name": "Luisfe Navarro",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "rodrigo-granic",
+   "name": "Rodrigo Granic",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "chalo",
+   "name": "Chalo",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "wato-warner",
+   "name": "Wato Warner",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "andres-rebolledo",
+   "name": "Andres Rebolledo",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "hector-meli",
+   "name": "Héctor Meli",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "gonzalo-fernandez",
+   "name": "Gonzalo Fernandez",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "rodrigo-villanueva",
+   "name": "Rodrigo Villanueva",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "juan-pablo-flores",
+   "name": "Juan Pablo Flores",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "juany",
+   "name": "Juany",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "guille-lizama",
+   "name": "Guille Lizama",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "marco",
+   "name": "Marco",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "wander-guerra",
+   "name": "Wander Guerra",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "felipe-diaz",
+   "name": "Felipe Diaz",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "marcelo-hernandez",
+   "name": "Marcelo Hernandez",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "maja",
+   "name": "Maja",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "gato-espinoza",
+   "name": "Gato Espinoza",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "titi-cerda",
+   "name": "Titi Cerda",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "manuel-neira",
+   "name": "Manuel Neira",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "vicho-padilla",
+   "name": "Vicho Padilla",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "ghazy-yarur",
+   "name": "Ghazy Yarur",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "renio-fabrega",
+   "name": "Renio Fabrega",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "titi-barrales",
+   "name": "Titi Barrales",
+   "num": null,
+   "pos": ""
+  },
+  {
+   "id": "pablo-griffith",
+   "name": "Pablo Griffith",
+   "num": null,
+   "pos": ""
+  }
+ ],
+ "matches": [
+  {
+   "id": "ap-01",
+   "t": "ap26",
+   "fecha": 1,
+   "rival": "Bocheros",
+   "date": "2026-04-12",
+   "gf": 2,
+   "gc": 2,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "esteban": {
+     "c": 1,
+     "min": 80
+    },
+    "cone": {
+     "c": 1
+    },
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 80
+    },
+    "chalo": {
+     "c": 1,
+     "min": 80
+    },
+    "wato-warner": {
+     "c": 1
+    },
+    "andres-rebolledo": {
+     "c": 1,
+     "min": 15
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 60
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 40
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 70
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 40
+    },
+    "juany": {
+     "c": 1
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 40
+    },
+    "marco": {
+     "c": 1
+    },
+    "wander-guerra": {
+     "c": 1
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 65
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 25
+    },
+    "maja": {
+     "c": 1,
+     "min": 30
+    },
+    "gato-espinoza": {
+     "c": 1,
+     "min": 40
+    },
+    "titi-cerda": {
+     "c": 1,
+     "min": 20
+    },
+    "manuel-neira": {
+     "c": 1,
+     "min": 40
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 60
+    },
+    "ghazy-yarur": {
+     "c": 1,
+     "min": 40
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 80
+    },
+    "pablo-griffith": {
+     "c": 1
+    }
+   }
+  },
+  {
+   "id": "ap-02",
+   "t": "ap26",
+   "fecha": 2,
+   "rival": "Old Boys",
+   "date": "2026-04-15",
+   "gf": 7,
+   "gc": 2,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "esteban": {
+     "c": 1,
+     "min": 60
+    },
+    "cone": {
+     "c": 1,
+     "min": 20
+    },
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 40
+    },
+    "chalo": {
+     "c": 1,
+     "min": 65
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 30
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 60
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 60
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 60
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 65
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 45
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 50
+    },
+    "titi-cerda": {
+     "c": 1,
+     "min": 80
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 50
+    },
+    "ghazy-yarur": {
+     "c": 1,
+     "min": 70
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 65
+    },
+    "pablo-griffith": {
+     "c": 1,
+     "min": 65
+    }
+   }
+  },
+  {
+   "id": "ap-03",
+   "t": "ap26",
+   "fecha": 3,
+   "rival": "Los Cabros",
+   "date": "2026-04-25",
+   "gf": 5,
+   "gc": 3,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 80
+    },
+    "chalo": {
+     "c": 1,
+     "min": 80
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 50
+    },
+    "andres-rebolledo": {
+     "c": 1,
+     "min": 30
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 40
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 80
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 40
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 60
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 80
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 80
+    },
+    "maja": {
+     "c": 1,
+     "min": 25
+    },
+    "gato-espinoza": {
+     "c": 1,
+     "min": 30
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 80
+    },
+    "ghazy-yarur": {
+     "c": 1,
+     "min": 40
+    },
+    "titi-barrales": {
+     "c": 1,
+     "min": 30
+    }
+   }
+  },
+  {
+   "id": "ap-04",
+   "t": "ap26",
+   "fecha": 4,
+   "rival": "Pintores",
+   "date": "2026-05-13",
+   "gf": 7,
+   "gc": 0,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 40
+    },
+    "chalo": {
+     "c": 1,
+     "min": 40
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 40
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 40
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 40
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 40
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 40
+    },
+    "juany": {
+     "c": 1,
+     "min": 30
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 40
+    },
+    "marco": {
+     "c": 1,
+     "min": 0
+    },
+    "wander-guerra": {
+     "c": 1,
+     "min": 40
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 40
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 40
+    },
+    "gato-espinoza": {
+     "c": 1,
+     "min": 30
+    },
+    "titi-cerda": {
+     "c": 1,
+     "min": 30
+    },
+    "manuel-neira": {
+     "c": 1,
+     "min": 30
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 40
+    },
+    "ghazy-yarur": {
+     "c": 1,
+     "min": 40
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 30
+    },
+    "titi-barrales": {
+     "c": 1,
+     "min": 30
+    },
+    "pablo-griffith": {
+     "c": 1,
+     "min": 30
+    }
+   }
+  },
+  {
+   "id": "ap-05",
+   "t": "ap26",
+   "fecha": 5,
+   "rival": "Stade",
+   "date": "2026-05-19",
+   "gf": 2,
+   "gc": 0,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "esteban": {
+     "c": 1,
+     "min": 0
+    },
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 70
+    },
+    "chalo": {
+     "c": 1,
+     "min": 80
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 30
+    },
+    "andres-rebolledo": {
+     "c": 1,
+     "min": 0
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 35
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 80
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 80
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 80
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 0
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 65
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 50
+    },
+    "gato-espinoza": {
+     "c": 1,
+     "min": 65
+    },
+    "titi-cerda": {
+     "c": 1,
+     "min": 0
+    },
+    "manuel-neira": {
+     "c": 1,
+     "min": 80
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 60
+    },
+    "ghazy-yarur": {
+     "c": 1,
+     "min": 70
+    },
+    "titi-barrales": {
+     "c": 1,
+     "min": 40
+    },
+    "pablo-griffith": {
+     "c": 1,
+     "min": 0
+    }
+   }
+  },
+  {
+   "id": "ap-06",
+   "t": "ap26",
+   "fecha": 6,
+   "rival": "Cuncunitas",
+   "date": "2026-05-30",
+   "gf": 2,
+   "gc": 1,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "esteban": {
+     "c": 1,
+     "min": 80
+    },
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 40
+    },
+    "chalo": {
+     "c": 1,
+     "min": 80
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 40
+    },
+    "andres-rebolledo": {
+     "c": 1,
+     "min": 30
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 70
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 80
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 60
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 50
+    },
+    "juany": {
+     "c": 1,
+     "min": 20
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 40
+    },
+    "wander-guerra": {
+     "c": 1,
+     "min": 20
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 40
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 40
+    },
+    "titi-cerda": {
+     "c": 1,
+     "min": 20
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 80
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 50
+    },
+    "titi-barrales": {
+     "c": 1,
+     "min": 80
+    }
+   }
+  },
+  {
+   "id": "ap-07",
+   "t": "ap26",
+   "fecha": 7,
+   "rival": "Coyotes",
+   "date": "2026-06-06",
+   "gf": 2,
+   "gc": 1,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "esteban": {
+     "c": 1,
+     "min": 80
+    },
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 80
+    },
+    "chalo": {
+     "c": 1,
+     "min": 80
+    },
+    "andres-rebolledo": {
+     "c": 1,
+     "min": 25
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 80
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 80
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 50
+    },
+    "juany": {
+     "c": 1,
+     "min": 25
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 80
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 60
+    },
+    "gato-espinoza": {
+     "c": 1,
+     "min": 0
+    },
+    "titi-cerda": {
+     "c": 1,
+     "min": 25
+    },
+    "manuel-neira": {
+     "c": 1,
+     "min": 0
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 60
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 50
+    },
+    "titi-barrales": {
+     "c": 1,
+     "min": 20
+    },
+    "pablo-griffith": {
+     "c": 1,
+     "min": 60
+    }
+   }
+  },
+  {
+   "id": "ap-08",
+   "t": "ap26",
+   "fecha": 8,
+   "rival": "Caleuche",
+   "date": "2026-06-20",
+   "gf": 1,
+   "gc": 3,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "esteban": {
+     "c": 1,
+     "min": 80
+    },
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 40
+    },
+    "chalo": {
+     "c": 1,
+     "min": 40
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 40
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 80
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 80
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 80
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 25
+    },
+    "juany": {
+     "c": 1,
+     "min": 0
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 40
+    },
+    "marco": {
+     "c": 1,
+     "min": 25
+    },
+    "wander-guerra": {
+     "c": 1,
+     "min": 30
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 80
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 60
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 80
+    },
+    "ghazy-yarur": {
+     "c": 1,
+     "min": 80
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 80
+    }
+   }
+  },
+  {
+   "id": "ap-09",
+   "t": "ap26",
+   "fecha": 9,
+   "rival": "Tigres",
+   "date": "2026-06-30",
+   "gf": 3,
+   "gc": 0,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "esteban": {
+     "c": 1,
+     "min": 80
+    },
+    "chalo": {
+     "c": 1,
+     "min": 80
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 80
+    },
+    "andres-rebolledo": {
+     "c": 1,
+     "min": 60
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 80
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 80
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 80
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 70
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 70
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 80
+    },
+    "ghazy-yarur": {
+     "c": 1,
+     "min": 80
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 80
+    },
+    "pablo-griffith": {
+     "c": 1,
+     "min": 70
+    }
+   }
+  },
+  {
+   "id": "ap-10",
+   "t": "ap26",
+   "fecha": 10,
+   "rival": "Old Georgeans",
+   "date": "2026-07-04",
+   "gf": 4,
+   "gc": 1,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "esteban": {
+     "c": 1,
+     "min": 80
+    },
+    "chalo": {
+     "c": 1,
+     "min": 60
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 80
+    },
+    "andres-rebolledo": {
+     "c": 1,
+     "min": 60
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 80
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 80
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 40
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 80
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 40
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 80
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 80
+    },
+    "manuel-neira": {
+     "c": 1,
+     "min": 40
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 60
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 25
+    }
+   }
+  },
+  {
+   "id": "ap-11",
+   "t": "ap26",
+   "fecha": 11,
+   "rival": "U. Sta. Mónica",
+   "date": "2026-07-08",
+   "gf": 2,
+   "gc": 0,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "esteban": {
+     "c": 1,
+     "min": 75
+    },
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 60
+    },
+    "chalo": {
+     "c": 1,
+     "min": 70
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 50
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 60
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 70
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 60
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 55
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 45
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 65
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 55
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 65
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 55
+    },
+    "ghazy-yarur": {
+     "c": 1,
+     "min": 60
+    },
+    "andres-rebolledo": {
+     "c": 1,
+     "min": 35
+    }
+   },
+   "est": true
+  },
+  {
+   "id": "ap-12",
+   "t": "ap26",
+   "fecha": 12,
+   "rival": "Mohicanos",
+   "date": "2026-08-23",
+   "gf": 3,
+   "gc": 4,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "esteban": {
+     "c": 1,
+     "min": 75
+    },
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 60
+    },
+    "chalo": {
+     "c": 1,
+     "min": 70
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 50
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 60
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 70
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 60
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 55
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 45
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 65
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 55
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 65
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 55
+    },
+    "titi-cerda": {
+     "c": 1,
+     "min": 35
+    },
+    "pablo-griffith": {
+     "c": 1,
+     "min": 55
+    }
+   },
+   "est": true
+  },
+  {
+   "id": "ap-13",
+   "t": "ap26",
+   "fecha": 13,
+   "rival": "Zánganos",
+   "date": "2026-08-29",
+   "gf": 3,
+   "gc": 5,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "esteban": {
+     "c": 1,
+     "min": 75
+    },
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 60
+    },
+    "chalo": {
+     "c": 1,
+     "min": 70
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 50
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 60
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 70
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 60
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 55
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 45
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 65
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 55
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 65
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 60
+    },
+    "manuel-neira": {
+     "c": 1,
+     "min": 50
+    },
+    "gato-espinoza": {
+     "c": 1,
+     "min": 40
+    }
+   },
+   "est": true
+  },
+  {
+   "id": "cl26-mw2b8wm1",
+   "t": "cl26",
+   "fecha": 1,
+   "rival": "Bocheros",
+   "date": "2026-09-02",
+   "gf": 0,
+   "gc": 0,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "andres-rebolledo": {
+     "c": 1,
+     "min": 20
+    },
+    "chalo": {
+     "c": 1,
+     "min": 80
+    },
+    "esteban": {
+     "c": 1,
+     "min": 80
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 80
+    },
+    "gato-espinoza": {
+     "c": 1,
+     "min": 50
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 80
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 30
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 70
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 60
+    },
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 60
+    },
+    "maja": {
+     "c": 1,
+     "min": 30
+    },
+    "manuel-neira": {
+     "c": 1,
+     "min": 40
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 60
+    },
+    "marco": {
+     "c": 1,
+     "min": 30
+    },
+    "pablo-griffith": {
+     "c": 1,
+     "min": 30
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 40
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 20
+    },
+    "titi-barrales": {
+     "c": 1,
+     "min": 40
+    },
+    "titi-cerda": {
+     "c": 1,
+     "min": 30
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 60
+    },
+    "wander-guerra": {
+     "c": 1,
+     "min": 30
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 60
+    }
+   }
+  },
+  {
+   "id": "cl26-mw2bdc1v",
+   "t": "cl26",
+   "fecha": 2,
+   "rival": "Old Boys",
+   "date": "2026-09-08",
+   "gf": 4,
+   "gc": 1,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "andres-rebolledo": {
+     "c": 1,
+     "min": 30
+    },
+    "chalo": {
+     "c": 1,
+     "min": 80
+    },
+    "esteban": {
+     "c": 1,
+     "min": 80
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 80
+    },
+    "gato-espinoza": {
+     "c": 1,
+     "min": 60
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 80
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 40
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 70
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 60
+    },
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 70
+    },
+    "pablo-griffith": {
+     "c": 1,
+     "min": 30
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 60
+    },
+    "titi-barrales": {
+     "c": 1,
+     "min": 40
+    },
+    "titi-cerda": {
+     "c": 1,
+     "min": 40
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 70
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 70
+    }
+   }
+  },
+  {
+   "id": "cl26-mw2bheio",
+   "t": "cl26",
+   "fecha": 3,
+   "rival": "Los Cabros",
+   "date": "2026-09-12",
+   "gf": 1,
+   "gc": 0,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "andres-rebolledo": {
+     "c": 1,
+     "min": 30
+    },
+    "chalo": {
+     "c": 1,
+     "min": 80
+    },
+    "esteban": {
+     "c": 1,
+     "min": 80
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 80
+    },
+    "gato-espinoza": {
+     "c": 1,
+     "min": 65
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 80
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 40
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 70
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 65
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 60
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 63
+    },
+    "titi-barrales": {
+     "c": 1,
+     "min": 40
+    },
+    "titi-cerda": {
+     "c": 1,
+     "min": 40
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 65
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 70
+    }
+   }
+  },
+  {
+   "id": "cl26-mw2bla63",
+   "t": "cl26",
+   "fecha": 4,
+   "rival": "Stade",
+   "date": "2026-10-03",
+   "gf": 6,
+   "gc": 2,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "andres-rebolledo": {
+     "c": 1,
+     "min": 20
+    },
+    "chalo": {
+     "c": 1,
+     "min": 80
+    },
+    "esteban": {
+     "c": 1,
+     "min": 80
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 80
+    },
+    "gato-espinoza": {
+     "c": 1,
+     "min": 60
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 40
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 80
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 70
+    },
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 60
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 70
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 70
+    },
+    "titi-barrales": {
+     "c": 1,
+     "min": 40
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 80
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 70
+    }
+   }
+  },
+  {
+   "id": "cl26-mw2bqo4u",
+   "t": "cl26",
+   "fecha": 5,
+   "rival": "Coyotes",
+   "date": "2026-10-31",
+   "gf": 1,
+   "gc": 1,
+   "dur": 80,
+   "played": true,
+   "stats": {
+    "chalo": {
+     "c": 1,
+     "min": 80
+    },
+    "esteban": {
+     "c": 1,
+     "min": 80
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 70
+    },
+    "gato-espinoza": {
+     "c": 1,
+     "min": 60
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 54
+    },
+    "guille-lizama": {
+     "c": 1,
+     "min": 30
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 70
+    },
+    "juan-pablo-flores": {
+     "c": 1,
+     "min": 60
+    },
+    "luisfe-navarro": {
+     "c": 1,
+     "min": 60
+    },
+    "maja": {
+     "c": 1,
+     "min": 20
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 60
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 60
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 30
+    },
+    "titi-barrales": {
+     "c": 1,
+     "min": 40
+    },
+    "titi-cerda": {
+     "c": 1,
+     "min": 20
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 60
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 65
+    }
+   }
+  },
+  {
+   "id": "cl-p06",
+   "t": "cl26",
+   "fecha": 6,
+   "rival": "Tigres",
+   "date": "2026-11-04",
+   "gf": null,
+   "gc": null,
+   "dur": 80,
+   "played": false,
+   "stats": {}
+  },
+  {
+   "id": "cl-p07",
+   "t": "cl26",
+   "fecha": 7,
+   "rival": "Pintores",
+   "date": "2026-11-10",
+   "gf": null,
+   "gc": null,
+   "dur": 80,
+   "played": false,
+   "stats": {},
+   "note": "Reprogramado (fecha 5 de la liga)"
+  },
+  {
+   "id": "cl-p08",
+   "t": "cl26",
+   "fecha": 8,
+   "rival": "Caleuche",
+   "date": "2026-11-14",
+   "gf": null,
+   "gc": null,
+   "dur": 80,
+   "played": false,
+   "stats": {}
+  },
+  {
+   "id": "cl-p09",
+   "t": "cl26",
+   "fecha": 9,
+   "rival": "Old Georgeans",
+   "date": "2026-11-21",
+   "gf": null,
+   "gc": null,
+   "dur": 80,
+   "played": false,
+   "stats": {}
+  },
+  {
+   "id": "cl-p10",
+   "t": "cl26",
+   "fecha": 10,
+   "rival": "U. Sta. Mónica",
+   "date": "2026-11-25",
+   "gf": null,
+   "gc": null,
+   "dur": 80,
+   "played": false,
+   "stats": {}
+  },
+  {
+   "id": "cl-p11",
+   "t": "cl26",
+   "fecha": 11,
+   "rival": "Mohicanos",
+   "date": "2026-12-01",
+   "gf": null,
+   "gc": null,
+   "dur": 80,
+   "played": false,
+   "stats": {}
+  },
+  {
+   "id": "cl-p12",
+   "t": "cl26",
+   "fecha": 12,
+   "rival": "Cuncunitas",
+   "date": "",
+   "gf": null,
+   "gc": null,
+   "dur": 80,
+   "played": false,
+   "stats": {},
+   "note": "Pospuesto, sin fecha nueva"
+  }
+ ]
+}
