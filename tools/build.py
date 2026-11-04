@@ -10,6 +10,7 @@ d = open(S('data.json'), encoding='utf-8').read()
 b64 = lambda f, t: f"data:{t};base64," + base64.b64encode(open(S(f), 'rb').read()).decode()
 s = s.replace('src="crest.png"', 'src="' + b64('crest.png', 'image/png') + '"')
 s = s.replace('url("equipo.jpg")', 'url("' + b64('equipo.jpg', 'image/jpeg') + '")')
+if os.path.exists(S('pmcoach-logo.png')): s = s.replace('src="pmcoach-logo.png"', 'src="' + b64('pmcoach-logo.png', 'image/png') + '"')
 a = '  try{ const r=await fetch("data.json",{cache:"no-store"}); D=await r.json(); }'
 if a not in s: sys.exit("ERROR: no se encontró la carga de data.json en app.html")
 s = s.replace(a, '  try{ D=JSON.parse(document.getElementById("cd-data").textContent); }')
