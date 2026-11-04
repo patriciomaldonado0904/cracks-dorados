@@ -167,6 +167,23 @@ label.f input,label.f select{border:1px solid var(--line);background:var(--surfa
 .pmfoot a.go{color:#141845;background:var(--gold-fill);border-radius:999px;padding:7px 14px;font-weight:700;font-size:13px;text-decoration:none;white-space:nowrap}
 .pmfoot a.go:hover{background:#f0cc4a}
 main{padding-block:20px 40px!important}
+/* goles */
+.gchart{display:flex;gap:6px;overflow-x:auto;padding:4px 2px 2px}
+.gcol{flex:1 0 46px;max-width:70px;display:grid;justify-items:center;text-align:center;gap:2px;cursor:pointer}
+.gcol .up,.gcol .dn{width:100%;height:96px;display:flex;justify-content:center}
+.gcol .up{align-items:flex-end;border-bottom:2px solid var(--ink)}
+.gcol .dn{align-items:flex-start;height:72px}
+.gcol .up b,.gcol .dn b{width:64%;border-radius:4px 4px 0 0;display:block}
+.gcol .up b{background:var(--win)}
+.gcol .dn b{background:var(--loss);border-radius:0 0 4px 4px;opacity:.85}
+.gcol .v{font-weight:700;font-size:13px;line-height:1.1}
+.gcol .r{font-size:11px;color:var(--muted);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.glegend{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-top:8px;flex-wrap:wrap}
+.glegend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.gmatch{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.gmatch:last-child{border-bottom:0}
+.sc{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
+.sc span{font-size:12px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:1px 8px}
 /* calentamiento */
 :root{--ph1:#d8262e;--ph2:#d9a514;--ph3:#2747b8;--ph4:#1d8a45;--ph5:#e2661b}
 .wubar{display:flex;height:34px;border-radius:9px;overflow:hidden;border:1px solid var(--line)}
@@ -237,6 +254,7 @@ main{padding-block:20px 40px!important}
       <button class="tab" data-v="resumen">Resumen</button>
       <button class="tab" data-v="plantel">Plantel</button>
       <button class="tab" data-v="partidos">Partidos</button>
+      <button class="tab" data-v="goles">Goles</button>
       <button class="tab" data-v="once">11 inicial</button>
       <button class="tab" data-v="calentamiento">Calentamiento</button>
       <button class="tab" data-v="mi" id="miTab" hidden>Mi ficha</button>
@@ -327,6 +345,7 @@ function render(){
   if(r==="plantel") main.innerHTML = vPlantel();
   else if(r==="partidos") main.innerHTML = vPartidos();
   else if(r==="once") main.innerHTML = vOnce();
+  else if(r==="goles") main.innerHTML = vGoles();
   else if(r==="calentamiento") main.innerHTML = vWarm();
   else if(r.startsWith("p-")) main.innerHTML = vPartido(r.slice(2));
   else if(r.startsWith("j-")) main.innerHTML = vJugador(r.slice(2));
@@ -647,11 +666,70 @@ $("#main").addEventListener("input",e=>{
 });
 $("#main").addEventListener("change",e=>{ const W=D.warmup; if(!W||!coach) return; if(e.target.id==="wu-match"){ W.matchId=e.target.value; render(); onceDirty(); } });
 
+/* ---------- goles ---------- */
+function scorers(m){ return Object.entries(m.stats||{}).filter(([,e])=>+e.g>0).map(([id,e])=>({p:pById(id),g:+e.g})).filter(x=>x.p).sort((a,b)=>b.g-a.g); }
+function vGoles(){
+  const ms=played(T).filter(m=>result(m));
+  if(!ms.length) return `<h2>Goles · ${esc(tName(T))}</h2>`+emptyT();
+  const gf=ms.reduce((a,m)=>a+ +m.gf,0), gc=ms.reduce((a,m)=>a+ +m.gc,0), n=ms.length;
+  const cs=ms.filter(m=>+m.gc===0).length, big=ms.filter(m=>+m.gf>=3).length, blank=ms.filter(m=>+m.gf===0).length;
+  const best=[...ms].sort((a,b)=>(b.gf-b.gc)-(a.gf-a.gc)||b.gf-a.gf)[0];
+  const mx=Math.max(1,...ms.map(m=>Math.max(+m.gf,+m.gc))), U=90/mx, dnH=Math.max(...ms.map(m=>+m.gc))*U+4;
+  const A=agg(T); const gl=A.rows.filter(r=>r.g>0).sort((a,b)=>b.g-a.g||a.min-b.min);
+  const asg=ms.reduce((a,m)=>a+scorers(m).reduce((x,y)=>x+y.g,0),0), unas=Math.max(0,gf-asg);
+  const chart=ms.map(m=>`<div class="gcol" data-p="${m.id}" title="Fecha ${m.fecha} vs ${esc(m.rival)}: ${m.gf}–${m.gc}">
+     <span class="v" style="color:var(--win)">${m.gf}</span><div class="up" style="height:94px"><b style="height:${(+m.gf*U).toFixed(1)}px"></b></div>
+     <div class="dn" style="height:${dnH.toFixed(0)}px"><b style="height:${(+m.gc*U).toFixed(1)}px"></b></div><span class="v" style="color:var(--loss)">${m.gc}</span>
+     <span class="r">${esc(m.rival)}</span></div>`).join("");
+  return `<div class="row"><h2>Goles · ${esc(tName(T))}</h2></div>
+  <div class="tiles">
+    <div class="tile"><div class="k">A favor</div><div class="v num">${gf}<small> · ${(gf/n).toFixed(1)}/PJ</small></div></div>
+    <div class="tile"><div class="k">En contra</div><div class="v num">${gc}<small> · ${(gc/n).toFixed(1)}/PJ</small></div></div>
+    <div class="tile"><div class="k">Diferencia</div><div class="v num">${gf-gc>0?"+":""}${gf-gc}</div></div>
+    <div class="tile"><div class="k">Valla invicta</div><div class="v num">${cs}<small> de ${n}</small></div></div>
+    <div class="tile"><div class="k">3 o más goles</div><div class="v num">${big}<small> partidos</small></div></div>
+    <div class="tile"><div class="k">Sin convertir</div><div class="v num">${blank}<small> partidos</small></div></div>
+  </div>
+  <section class="panel"><h3>Goles por partido</h3><div class="gchart">${chart}</div>
+    <div class="glegend"><span><i style="background:var(--win)"></i>Goles de Cracks (arriba)</span><span><i style="background:var(--loss)"></i>Goles del rival (abajo)</span>${best?`<span>Mejor resultado: ${best.gf}–${best.gc} vs ${esc(best.rival)}</span>`:""}</div></section>
+  <div class="grid2">
+  <section class="panel"><h3>Goleadores</h3>${gl.length?`<div class="tscroll" style="border:0"><table><thead><tr><th>Jugador</th><th>Goles</th><th>Asist.</th><th>PJ</th><th>Min/gol</th></tr></thead><tbody>${gl.map(r=>`<tr data-j="${r.p.id}"><td class="name">${esc(r.p.name)}</td><td><b>${r.g}</b></td><td>${r.a||"–"}</td><td>${r.pj}</td><td>${r.min?Math.round(r.min/r.g)+"′":"–"}</td></tr>`).join("")}</tbody></table></div>`:`<p class="note">Todavía no hay goleadores cargados en ${esc(tName(T))}.${coach?" Usa “Cargar goleadores” en cada partido.":" El DT los irá cargando."}</p>`}
+   ${unas&&asg?`<p class="note">${unas} gol(es) de ${gf} sin goleador asignado.</p>`:""}</section>
+  <section class="panel"><h3>Goleadores por partido</h3>${[...ms].reverse().map(m=>{ const sc=scorers(m), tot=sc.reduce((a,b)=>a+b.g,0);
+    return `<div class="gmatch"><div style="min-width:0"><b>vs ${esc(m.rival)}</b> <span class="small muted">· F${m.fecha}${T==="all"?" "+((D.tournaments.find(t=>t.id===m.t)||{}).name||"").replace(/ \d{4}$/,""):""}</span>
+      ${sc.length?`<div class="sc">${sc.map(x=>`<span>${esc(x.p.name)}${x.g>1?" ×"+x.g:""}</span>`).join("")}${tot<+m.gf?`<span class="muted">${+m.gf-tot} sin asignar</span>`:""}</div>`:`<div class="small muted">${+m.gf?"Sin goleadores cargados":"No convirtió"}</div>`}</div>
+      <span class="res" style="font-size:18px">${m.gf}–${m.gc} <span class="chip ${result(m)}">${result(m)}</span></span>
+      ${coach&&+m.gf?`<button class="btn" data-act="g-edit" data-id="${m.id}">Cargar goleadores</button>`:"<span></span>"}</div>`; }).join("")}</section>
+  </div>`;
+}
+function openScorers(id){
+  const m=D.matches.find(x=>x.id===id); if(!m) return;
+  const inSt=p=>m.stats&&m.stats[p.id]&&m.stats[p.id].c;
+  const pl=D.players.filter(p=>p.active!==false||inSt(p)).sort((a,b)=>(inSt(b)?1:0)-(inSt(a)?1:0)||a.name.localeCompare(b.name));
+  $("#sheetRoot").innerHTML=`<div class="sheet" role="dialog" aria-modal="true" aria-label="Goleadores"><form class="card" id="gform">
+    <div class="row"><div><h2>Goleadores</h2><div class="small muted">vs ${esc(m.rival)} · Cracks ${m.gf}–${m.gc}</div></div><span class="spacer"></span><button type="button" class="btn ghost" data-x>Cerrar</button></div>
+    <div class="row"><span class="okchip" id="g-count"></span><span class="spacer"></span><input id="g-q" type="text" placeholder="Buscar jugador" style="border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:7px 10px"></div>
+    <div class="tscroll ed"><table><thead><tr><th>Jugador</th><th>Goles</th><th>Asist.</th></tr></thead><tbody>${pl.map(p=>{ const e=(m.stats||{})[p.id]||{};
+      return `<tr data-id="${p.id}"><td>${esc(p.name)}${inSt(p)?"":` <span class="small muted">· no convocado</span>`}</td><td><input type="number" class="gg" id="gg-${p.id}" min="0" max="15" value="${e.g||""}"></td><td><input type="number" class="ga" id="ga-${p.id}" min="0" max="15" value="${e.a||""}"></td></tr>`; }).join("")}</tbody></table></div>
+    <p class="note">Si un goleador no estaba en la lista de convocados, queda marcado como convocado en ese partido.</p>
+    <div class="row"><span class="spacer"></span><button type="button" class="btn" data-x>Cancelar</button><button type="submit" class="btn pri">Listo</button></div></form></div>`;
+  const f=$("#gform");
+  const count=()=>{ const t=[...f.querySelectorAll(".gg")].reduce((a,i)=>a+(parseInt(i.value,10)||0),0); const c=$("#g-count"); c.className="okchip "+(t===+m.gf?"ok":"warn"); c.textContent=`${t} de ${m.gf} goles asignados`; };
+  count(); f.addEventListener("input",e=>{ if(e.target.id==="g-q"){ const q=e.target.value.toLowerCase(); f.querySelectorAll("tbody tr").forEach(tr=>tr.hidden=!tr.textContent.toLowerCase().includes(q)); } else count(); });
+  f.addEventListener("click",e=>{ if(e.target.closest("[data-x]")) closeSheet(); });
+  f.addEventListener("submit",e=>{ e.preventDefault(); m.stats=m.stats||{};
+    f.querySelectorAll("tbody tr").forEach(tr=>{ const pid=tr.dataset.id, g=parseInt(tr.querySelector(".gg").value,10)||0, a=parseInt(tr.querySelector(".ga").value,10)||0;
+      let st=m.stats[pid]; if(!st && (g||a)) st=m.stats[pid]={c:1}; if(!st) return;
+      if(g) st.g=g; else delete st.g; if(a) st.a=a; else delete st.a; });
+    closeSheet(); render(); onceDirty("Goleadores actualizados"); });
+}
+
 /* ---------- clicks ---------- */
 $("#main").addEventListener("click", e=>{
   const s=e.target.closest("[data-sort]"); if(s){ const k=s.dataset.sort; sort = sort.k===k?{k,d:-sort.d}:{k,d:k==="name"?1:-1}; render(); return; }
   const act=e.target.closest("[data-act]");
   if(act){ const a=act.dataset.act;
+    if(a==="g-edit"){ openScorers(act.dataset.id); return; }
     if(a==="wu-new"){ D.warmup=wuFromTpl(act.dataset.tpl); render(); onceDirty("Calentamiento creado"); return; }
     if(a==="wu-apply"){ const k=$("#wu-tpl").value; const mid=D.warmup.matchId; D.warmup=wuFromTpl(k); D.warmup.matchId=mid; render(); onceDirty("Plantilla "+WU_TPL[k].name+" aplicada"); return; }
     if(a==="wu-del"){ D.warmup=null; render(); onceDirty("Calentamiento borrado · puedes deshacer con Descartar"); return; }
