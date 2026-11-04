@@ -157,6 +157,34 @@ label.f input,label.f select{border:1px solid var(--line);background:var(--surfa
 .savebar .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-block:10px}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--ink);color:var(--bg);padding:9px 14px;border-radius:8px;font-weight:600;font-size:14px;max-width:calc(100% - 32px)}
 .confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--surface-2);border:1px solid var(--red);border-radius:8px;padding:8px 10px}
+
+/* 11 inicial */
+.oncehead{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.ctrls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ctrls select{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 8px;font-weight:600;max-width:100%}
+.pitchwrap{display:grid;justify-items:center;gap:14px}
+.pitch{position:relative;width:min(100%,520px);aspect-ratio:68/100;border-radius:14px;background:repeating-linear-gradient(180deg,#2f8f46 0 10%,#29813f 10% 20%);box-shadow:0 10px 30px rgba(10,12,40,.25);touch-action:none;user-select:none;-webkit-user-select:none}
+.pitch svg.lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.pitch .tag{position:absolute;left:10px;top:8px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.pitch .tag.r{left:auto;right:10px}
+.tok{position:absolute;transform:translate(-50%,-50%);display:grid;justify-items:center;gap:2px;width:84px;touch-action:none;-webkit-tap-highlight-color:transparent}
+.tok[data-j]{cursor:pointer}
+.coach-on .tok{cursor:grab}
+.tok .shirt{width:44px;height:44px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.4));transition:transform .12s}
+.tok .nm{max-width:84px;font-size:12px;font-weight:700;line-height:1.2;color:#fff;background:rgba(10,12,40,.85);padding:2px 7px;border-radius:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tok.empty .shirt{opacity:.4}
+.tok.empty .nm{background:rgba(10,12,40,.5);font-weight:600}
+.tok.drag{z-index:6;cursor:grabbing}
+.tok.drag .shirt{transform:scale(1.18)}
+.bench{display:flex;flex-wrap:wrap;gap:6px}
+.bench .chip2{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 10px;font-size:13px;font-weight:600;cursor:pointer}
+.picklist{display:grid;gap:4px;max-height:52vh;overflow-y:auto}
+.pick{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:8px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;cursor:pointer}
+.pick:hover{border-color:var(--muted)}
+.pick.on{border-color:var(--red)}
+.pick .dorsal{min-width:0}
+.pick small{color:var(--muted);font-size:12px}
+@media (max-width:560px){.tok{width:76px}.tok .nm{max-width:76px;font-size:10.5px;padding:2px 5px}.tok .shirt{width:38px;height:38px}}
 @media (max-width:560px){.crest{width:52px}.band .wrap{padding-block:90px 16px}.bignum{font-size:44px}}
 @media (prefers-reduced-motion:no-preference){.rank .fill,.col .bx b,.pct i b{transition:height .3s,width .3s}}
 </style>
@@ -177,6 +205,7 @@ label.f input,label.f select{border:1px solid var(--line);background:var(--surfa
       <button class="tab" data-v="resumen">Resumen</button>
       <button class="tab" data-v="plantel">Plantel</button>
       <button class="tab" data-v="partidos">Partidos</button>
+      <button class="tab" data-v="once">11 inicial</button>
       <button class="tab" data-v="mi" id="miTab" hidden>Mi ficha</button>
     </div>
     <div class="seg" id="seg" role="group" aria-label="Torneo"></div>
@@ -254,9 +283,10 @@ function render(){
   const top = r.startsWith("j-")? (r==="j-"+myId?"mi":"plantel") : r.startsWith("p-")? "partidos" : r;
   document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-current", b.dataset.v===top?"page":"false"));
   $("#miTab").hidden = !myId || !D.players.some(p=>p.id===myId);
-  const main=$("#main");
+  const main=$("#main"); main.classList.toggle("coach-on", coach); $("#seg").hidden = r==="once";
   if(r==="plantel") main.innerHTML = vPlantel();
   else if(r==="partidos") main.innerHTML = vPartidos();
+  else if(r==="once") main.innerHTML = vOnce();
   else if(r.startsWith("p-")) main.innerHTML = vPartido(r.slice(2));
   else if(r.startsWith("j-")) main.innerHTML = vJugador(r.slice(2));
   else main.innerHTML = vResumen();
@@ -298,7 +328,7 @@ function vResumen(){
     <section class="panel"><h3>Goleadores</h3>${hasGoals?top("g",r=>r.g):`<p class="note">Aún no hay goles registrados en ${esc(tName(T))}.${coach?" Cárgalos al editar cada partido.":""}</p>`}</section>
     <section class="panel"><h3>Asistencias</h3>${hasAst?top("a",r=>r.a):`<p class="note">Aún no hay asistencias registradas.</p>`}</section>
   </div>`}
-  ${next.length?`<section class="panel"><h3>Próximo partido</h3><div class="mlist">${next.slice(0,1).map(matchCard).join("")}</div></section>`:""}
+  ${next.length?`<section class="panel"><div class="row"><h3 style="margin:0">Próximo partido</h3><span class="spacer"></span>${D.lineup&&D.lineup.matchId===next[0].id?`<button class="btn dark" data-go="once">Ver 11 inicial</button>`:""}</div><div class="mlist" style="margin-top:10px">${next.slice(0,1).map(matchCard).join("")}</div></section>`:""}
   <section class="panel"><h3>Últimos partidos</h3><div class="mlist">${[...tm.ms].sort((a,b)=>(a.date||"").localeCompare(b.date||"")).reverse().slice(0,4).map(matchCard).join("")}</div></section>`;
 }
 
@@ -379,11 +409,133 @@ function vJugador(id){
   ${T!=="all"?`<p class="note">Temporada completa 2026: ${all.min}′ en ${all.pj} partidos · ${all.conv} convocatorias · ${all.g} goles.</p>`:""}`;
 }
 
+/* ---------- 11 inicial ---------- */
+const FORMS={
+ "4-4-2":[[50,89],[14,69],[38,73],[62,73],[86,69],[14,46],[38,49],[62,49],[86,46],[35,22],[65,22]],
+ "4-3-3":[[50,89],[14,69],[38,73],[62,73],[86,69],[26,49],[50,53],[74,49],[17,24],[50,18],[83,24]],
+ "4-2-3-1":[[50,89],[14,69],[38,73],[62,73],[86,69],[35,56],[65,56],[16,36],[50,36],[84,36],[50,16]],
+ "4-1-4-1":[[50,89],[14,69],[38,73],[62,73],[86,69],[50,57],[14,39],[38,41],[62,41],[86,39],[50,16]],
+ "3-5-2":[[50,89],[25,72],[50,74],[75,72],[10,46],[30,51],[50,46],[70,51],[90,46],[35,21],[65,21]],
+ "3-4-3":[[50,89],[25,72],[50,74],[75,72],[14,47],[38,50],[62,50],[86,47],[17,23],[50,18],[83,23]],
+ "5-3-2":[[50,89],[9,62],[29,72],[50,74],[71,72],[91,62],[26,46],[50,49],[74,46],[35,21],[65,21]]
+};
+const pById = id => D.players.find(p=>p.id===id);
+const shortName = n => { const w=String(n||"").trim().split(/\s+/); return (n.length<=9||w.length<2) ? n : w[0]+" "+w[w.length-1][0]+"."; };
+function upcoming(){ return D.matches.filter(m=>!m.played).sort((a,b)=>(a.date||"9999").localeCompare(b.date||"9999")); }
+function fmtDate(d,long){ return d?new Date(d+"T12:00").toLocaleDateString("es-CL",long?{weekday:"long",day:"numeric",month:"long"}:{day:"numeric",month:"short"}):""; }
+const SHIRT = gk => `<svg class="shirt" viewBox="0 0 44 44" aria-hidden="true"><path d="M14 5 L5 10 L1 20 L9 23 L10 17 V40 H34 V17 L35 23 L43 20 L39 10 L30 5 Q22 11 14 5Z" fill="${gk?"#e3bd36":"url(#cdStripes)"}" stroke="#0b0d23" stroke-width="1.4" stroke-linejoin="round"/><path d="M14 5 Q22 11 30 5" fill="none" stroke="${gk?"#141845":"#e3bd36"}" stroke-width="2"/></svg>`;
+function tok(s,i){
+  const p=s.pid?pById(s.pid):null; const name=p?p.name:(s.label||"");
+  const num=p&&p.num!=null?p.num:"";
+  return `<div class="tok${name?"":" empty"}" data-slot="${i}"${!coach&&p?` data-j="${p.id}"`:""} style="left:${s.x}%;top:${s.y}%" title="${esc(name)}">
+    <span style="position:relative;display:grid;place-items:center">${SHIRT(i===0)}<b style="position:absolute;top:15px;font-family:var(--display);font-size:15px;color:${i===0?"#141845":"#fff"};text-shadow:${i===0?"none":"0 1px 2px #000"}">${esc(num)}</b></span>
+    <span class="nm">${esc(name?shortName(name):(coach?"Elegir":"—"))}</span></div>`;
+}
+const PITCH_LINES = `<svg class="lines" viewBox="0 0 68 100" preserveAspectRatio="none" aria-hidden="true">
+  <defs><pattern id="cdStripes" width="8" height="44" patternUnits="userSpaceOnUse"><rect width="4" height="44" fill="#c4161c"/><rect x="4" width="4" height="44" fill="#1a1f5c"/></pattern></defs>
+  <g fill="none" stroke="rgba(255,255,255,.6)" stroke-width=".35">
+  <rect x="2" y="2" width="64" height="96" rx=".5"/><line x1="2" y1="50" x2="66" y2="50"/><circle cx="34" cy="50" r="7"/>
+  <rect x="14" y="2" width="40" height="15"/><rect x="25" y="2" width="18" height="5"/><rect x="14" y="83" width="40" height="15"/><rect x="25" y="93" width="18" height="5"/>
+  <path d="M27.5 17 A7 7 0 0 0 40.5 17"/><path d="M27.5 83 A7 7 0 0 1 40.5 83"/></g>
+  <circle cx="34" cy="50" r=".6" fill="rgba(255,255,255,.7)"/></svg>`;
+function vOnce(){
+  const L=D.lineup;
+  if(!L) return `<h2>11 inicial</h2>`+(coach
+    ?`<div class="panel empty"><b>Arma el equipo del próximo partido</b>Elige la formación y pon a los 11 titulares en la cancha.<div class="row" style="justify-content:center;margin-top:14px"><button class="btn pri" data-act="once-new">Armar 11 inicial</button></div></div>`
+    :`<div class="panel empty"><b>El DT aún no publica el 11 inicial</b>Aparecerá aquí antes del próximo partido.</div>`);
+  const m=D.matches.find(x=>x.id===L.matchId);
+  const ups=upcoming(); if(m && !ups.includes(m)) ups.unshift(m);
+  const title = m ? `vs ${m.rival}` : (L.rival||"Próximo partido");
+  const sub = m ? [(D.tournaments.find(t=>t.id===m.t)||{}).name, m.fecha?`Fecha ${m.fecha}`:"", fmtDate(m.date,true)].filter(Boolean).join(" · ") : "";
+  const n = L.slots.filter(s=>s.pid||s.label).length;
+  const bench = (L.bench||[]).map(pById).filter(Boolean);
+  return `<div class="oncehead"><div style="min-width:0"><div class="small muted">11 inicial · ${esc(L.formation)}</div><h2 style="font-size:28px">${esc(title)}</h2>${sub?`<div class="small muted">${esc(sub)}</div>`:""}</div></div>
+  ${coach?`<div class="panel ctrls">
+    <label class="small muted" for="once-match">Partido</label><select id="once-match">${ups.map(x=>`<option value="${x.id}" ${x.id===L.matchId?"selected":""}>${esc((x.date?fmtDate(x.date)+" · ":"")+"vs "+x.rival)}</option>`).join("")}<option value="" ${!m?"selected":""}>Otro / sin partido</option></select>
+    <label class="small muted" for="once-form">Formación</label><select id="once-form">${Object.keys(FORMS).map(f=>`<option ${f===L.formation?"selected":""}>${f}</option>`).join("")}</select>
+    <span class="spacer"></span>
+    <button class="btn" data-act="once-bench">Suplentes</button><button class="btn" data-act="once-clear">Vaciar cancha</button><button class="btn ghost" data-act="once-del" style="color:var(--red)">Borrar</button>
+  </div><p class="note">Toca una camiseta para elegir al jugador. Arrástrala para moverla en la cancha. Cuando termines, toca “Guardar y publicar”. ${n}/11 puestos completos.</p>`:""}
+  <div class="pitchwrap"><div class="pitch" id="pitch">${PITCH_LINES}${L.slots.map(tok).join("")}</div></div>
+  <section class="panel"><h3>Suplentes</h3>${bench.length?`<div class="bench">${bench.map(p=>`<span class="chip2" data-j="${p.id}">${p.num!=null?p.num+" · ":""}${esc(p.name)}</span>`).join("")}</div>`:`<p class="note">${coach?"Agrega los suplentes con el botón “Suplentes”.":"Sin suplentes publicados."}</p>`}
+  ${L.note||coach?`<h3 style="margin-top:14px">Indicaciones</h3>${coach?`<input id="once-note" type="text" value="${esc(L.note||"")}" placeholder="Ej: citación 19:15, camiseta titular" style="width:100%;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:8px 10px">`:`<p>${esc(L.note)}</p>`}`:""}</section>`;
+}
+function newLineup(){
+  const nx=upcoming().find(m=>m.date && m.date>=new Date().toISOString().slice(0,10))||upcoming()[0];
+  D.lineup={matchId:nx?nx.id:"", formation:"4-4-2", slots:FORMS["4-4-2"].map(([x,y])=>({x,y,pid:null,label:""})), bench:[], note:""};
+}
+function onceDirty(msg){ try{ sessionStorage.setItem("cd.draft", JSON.stringify(D)); }catch(e){} updateSavebar(); if(msg) toast(msg); }
+function openSlot(i){
+  const L=D.lineup, s=L.slots[i];
+  const inXI=new Map(L.slots.map((x,k)=>[x.pid,k]));
+  const pl=D.players.filter(p=>p.active!==false||p.id===s.pid).sort((a,b)=>a.name.localeCompare(b.name));
+  const row=p=>{ const k=inXI.get(p.id); const here=k===i; const other=k!=null&&!here;
+    return `<button type="button" class="pick${here?" on":""}" data-pick="${p.id}"><span class="dorsal">${p.num??""}</span><span>${esc(p.name)}${p.pos?` <small>· ${esc(p.pos)}</small>`:""}</span><small>${here?"En este puesto":other?"En cancha (cambiar)":(L.bench||[]).includes(p.id)?"Suplente":""}</small></button>`; };
+  $("#sheetRoot").innerHTML=`<div class="sheet" role="dialog" aria-modal="true" aria-label="Elegir jugador"><div class="card">
+    <div class="row"><h2>${i===0?"Arquero":"Elegir jugador"}</h2><span class="spacer"></span><button type="button" class="btn ghost" data-x>Cerrar</button></div>
+    <input id="pick-q" type="text" placeholder="Buscar jugador" style="border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:8px 10px">
+    <div class="picklist" id="picklist">${pl.map(row).join("")}</div>
+    <div class="row"><input id="pick-free" type="text" placeholder="O escribe otro nombre" value="${esc(s.pid?"":s.label||"")}" style="flex:1;min-width:140px;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:8px 10px"><button type="button" class="btn" id="pick-freebtn">Usar nombre</button></div>
+    <div class="row"><button type="button" class="btn ghost" id="pick-clear" style="color:var(--red)">Dejar puesto vacío</button><span class="spacer"></span></div>
+  </div></div>`;
+  const root=$("#sheetRoot .card");
+  root.addEventListener("click",e=>{
+    if(e.target.closest("[data-x]")){ closeSheet(); return; }
+    const b=e.target.closest("[data-pick]"); if(b){ const pid=b.dataset.pick; const k=inXI.get(pid);
+      if(k!=null && k!==i){ L.slots[k].pid=s.pid; L.slots[k].label=s.pid?"":s.label; }
+      s.pid=pid; s.label=""; L.bench=(L.bench||[]).filter(x=>x!==pid); closeSheet(); render(); onceDirty(); }
+  });
+  $("#pick-q").addEventListener("input",e=>{ const q=e.target.value.toLowerCase(); root.querySelectorAll(".pick").forEach(b=>{ b.hidden = !b.textContent.toLowerCase().includes(q); }); });
+  $("#pick-freebtn").onclick=()=>{ const v=$("#pick-free").value.trim(); if(!v){ $("#pick-free").focus(); return; } s.pid=null; s.label=v; closeSheet(); render(); onceDirty(); };
+  $("#pick-clear").onclick=()=>{ s.pid=null; s.label=""; closeSheet(); render(); onceDirty(); };
+  if(matchMedia("(pointer:fine)").matches) setTimeout(()=>$("#pick-q")?.focus(),30);
+}
+function openBench(){
+  const L=D.lineup; const inXI=new Set(L.slots.map(x=>x.pid).filter(Boolean));
+  const pl=D.players.filter(p=>p.active!==false && !inXI.has(p.id)).sort((a,b)=>a.name.localeCompare(b.name));
+  $("#sheetRoot").innerHTML=`<div class="sheet" role="dialog" aria-modal="true" aria-label="Suplentes"><form class="card" id="bform">
+    <div class="row"><h2>Suplentes</h2><span class="spacer"></span><button type="button" class="btn ghost" data-x>Cerrar</button></div>
+    <div class="picklist">${pl.map(p=>`<label class="pick" style="grid-template-columns:30px minmax(0,1fr) auto"><span class="dorsal">${p.num??""}</span><span>${esc(p.name)}</span><input type="checkbox" id="b-${p.id}" value="${p.id}" ${(L.bench||[]).includes(p.id)?"checked":""} style="width:18px;height:18px;accent-color:var(--red)"></label>`).join("")||`<p class="note">Todos los jugadores activos están en la cancha.</p>`}</div>
+    <div class="row"><span class="spacer"></span><button type="button" class="btn" data-x>Cancelar</button><button type="submit" class="btn pri">Listo</button></div></form></div>`;
+  const f=$("#bform");
+  f.addEventListener("click",e=>{ if(e.target.closest("[data-x]")) closeSheet(); });
+  f.addEventListener("submit",e=>{ e.preventDefault(); L.bench=[...f.querySelectorAll("input:checked")].map(x=>x.value); closeSheet(); render(); onceDirty(); });
+}
+let drag=null;
+$("#main").addEventListener("pointerdown",e=>{
+  const t=e.target.closest(".tok"); if(!t||!coach||!D.lineup) return;
+  e.preventDefault(); drag={t,i:+t.dataset.slot,sx:e.clientX,sy:e.clientY,moved:false,rect:$("#pitch").getBoundingClientRect()};
+  try{ t.setPointerCapture(e.pointerId); }catch(_){} t.classList.add("drag");
+});
+$("#main").addEventListener("pointermove",e=>{
+  if(!drag) return; if(!drag.moved && Math.hypot(e.clientX-drag.sx,e.clientY-drag.sy)<6) return;
+  drag.moved=true; const r=drag.rect;
+  drag.x=Math.min(95,Math.max(5,(e.clientX-r.left)/r.width*100)); drag.y=Math.min(96,Math.max(4,(e.clientY-r.top)/r.height*100));
+  drag.t.style.left=drag.x+"%"; drag.t.style.top=drag.y+"%";
+});
+function endDrag(){
+  if(!drag) return; const d=drag; drag=null; d.t.classList.remove("drag");
+  if(d.moved){ const s=D.lineup.slots[d.i]; s.x=Math.round(d.x*10)/10; s.y=Math.round(d.y*10)/10; onceDirty(); }
+  else openSlot(d.i);
+}
+$("#main").addEventListener("pointerup",endDrag);
+$("#main").addEventListener("pointercancel",()=>{ if(drag){ drag.t.classList.remove("drag"); drag=null; render(); } });
+$("#main").addEventListener("change",e=>{
+  const L=D.lineup; if(!L||!coach) return;
+  if(e.target.id==="once-form"){ const f=e.target.value; L.formation=f; L.slots=FORMS[f].map(([x,y],k)=>({...(L.slots[k]||{pid:null,label:""}),x,y})); render(); onceDirty("Formación "+f); }
+  else if(e.target.id==="once-match"){ L.matchId=e.target.value; render(); onceDirty(); }
+  else if(e.target.id==="once-note"){ L.note=e.target.value.trim(); onceDirty(); }
+});
+
 /* ---------- clicks ---------- */
 $("#main").addEventListener("click", e=>{
   const s=e.target.closest("[data-sort]"); if(s){ const k=s.dataset.sort; sort = sort.k===k?{k,d:-sort.d}:{k,d:k==="name"?1:-1}; render(); return; }
   const act=e.target.closest("[data-act]");
   if(act){ const a=act.dataset.act;
+    if(a==="once-new"){ newLineup(); render(); onceDirty("11 inicial creado"); return; }
+    if(a==="once-bench"){ openBench(); return; }
+    if(a==="once-clear"){ D.lineup.slots.forEach(x=>{x.pid=null;x.label="";}); render(); onceDirty("Cancha vacía · puedes deshacer con Descartar"); return; }
+    if(a==="once-del"){ D.lineup=null; render(); onceDirty("11 inicial borrado · puedes deshacer con Descartar"); return; }
     if(a==="new") openMatch(null); else if(a==="edit") openMatch(act.dataset.id); else if(a==="roster") openRoster();
     else if(a==="me"){ const id=route().slice(2); myId = myId===id?null:id; LS.set("cd.me",myId); render(); }
     return; }
@@ -513,3 +665,4 @@ async function boot(){
 boot();
 })();
 </script>
+
