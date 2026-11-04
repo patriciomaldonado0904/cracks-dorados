@@ -158,6 +158,15 @@ label.f input,label.f select{border:1px solid var(--line);background:var(--surfa
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--ink);color:var(--bg);padding:9px 14px;border-radius:8px;font-weight:600;font-size:14px;max-width:calc(100% - 32px)}
 .confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--surface-2);border:1px solid var(--red);border-radius:8px;padding:8px 10px}
 
+/* firma PM Coach */
+.pmfoot{background:#0a0a0a;color:#f2f2f2;border-top:3px solid #a8c800}
+.pmfoot .wrap{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;padding-block:18px calc(18px + 64px)}
+.pmfoot img{height:30px;width:auto;display:block}
+.pmfoot p{margin:0;font-size:13px;color:#c9c9c9;min-width:0;flex:1 1 220px}
+.pmfoot p b{color:#fff}
+.pmfoot a.go{color:#0a0a0a;background:#a8c800;border-radius:999px;padding:7px 14px;font-weight:700;font-size:13px;text-decoration:none;white-space:nowrap}
+.pmfoot a.go:hover{background:#bddc1a}
+main{padding-block:20px 40px!important}
 /* calentamiento */
 :root{--ph1:#d8262e;--ph2:#d9a514;--ph3:#2747b8;--ph4:#1d8a45;--ph5:#e2661b}
 .wubar{display:flex;height:34px;border-radius:9px;overflow:hidden;border:1px solid var(--line)}
@@ -238,6 +247,13 @@ label.f input,label.f select{border:1px solid var(--line);background:var(--surfa
 <main class="wrap" id="main">
   <div class="panel empty"><b>Cargando estadísticas…</b>Plantel, minutos y partidos del equipo.</div>
 </main>
+<footer class="pmfoot">
+  <div class="wrap">
+    <a href="https://www.pmcoachpro.com/" target="_blank" rel="noopener" aria-label="PM Coach"><img src="pmcoach-logo.png" alt="PM Coach"></a>
+    <p>App creada por <b>Patricio Maldonado</b>, profesor de educación física y DT de Cracks Dorados. Entrenamiento para futbolistas en <b>pmcoachpro.com</b>.</p>
+    <a class="go" href="https://www.pmcoachpro.com/" target="_blank" rel="noopener">Conoce PM Coach →</a>
+  </div>
+</footer>
 <div id="sheetRoot"></div>
 <div class="savebar" id="savebar" hidden>
   <div class="wrap">
