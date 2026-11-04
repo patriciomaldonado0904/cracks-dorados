@@ -43,7 +43,7 @@ button,input,select{font:inherit;color:inherit}
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
 .bar .wrap{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;padding-block:10px}
-.tabs{display:flex;gap:2px;overflow-x:auto}
+.tabs{display:flex;flex-wrap:wrap;gap:2px}
 .tab{background:none;border:0;padding:8px 12px;border-radius:8px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
 .tab[aria-current="page"]{color:var(--ink);background:var(--surface);box-shadow:inset 0 -3px 0 var(--red)}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
@@ -159,6 +159,29 @@ label.f input,label.f select{border:1px solid var(--line);background:var(--surfa
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--ink);color:var(--bg);padding:9px 14px;border-radius:8px;font-weight:600;font-size:14px;max-width:calc(100% - 32px)}
 .confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--surface-2);border:1px solid var(--red);border-radius:8px;padding:8px 10px}
 
+/* calentamiento */
+:root{--ph1:#d8262e;--ph2:#d9a514;--ph3:#2747b8;--ph4:#1d8a45;--ph5:#e2661b}
+.wubar{display:flex;height:34px;border-radius:9px;overflow:hidden;border:1px solid var(--line)}
+.wubar>span{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;white-space:nowrap;overflow:hidden;min-width:0;padding:0 4px}
+.wublocks{display:grid;gap:12px}
+.wublk{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:62px minmax(0,1fr);gap:4px 14px;border-left:6px solid var(--c)}
+.wublk .t{font-family:var(--display);font-weight:800;font-size:30px;line-height:1;color:var(--c)}
+.wublk .t small{display:block;font-family:var(--body);font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+.wublk h4{margin:0;font-size:16px}
+.wublk .goal{color:var(--muted);font-size:13px;margin:2px 0 6px}
+.wublk ul{margin:0;padding-left:18px;display:grid;gap:3px}
+.wublk textarea{width:100%;min-height:118px;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:8px 10px;font:inherit;font-size:14px;resize:vertical}
+.wublk input[type=number]{width:58px;border:1px solid var(--line);background:var(--surface-2);border-radius:6px;padding:4px 6px;text-align:right;font-weight:700}
+.okchip{display:inline-block;border-radius:999px;padding:3px 10px;font-size:13px;font-weight:700}
+.okchip.ok{background:color-mix(in srgb,var(--win) 16%,transparent);color:var(--win)}
+.okchip.warn{background:color-mix(in srgb,var(--loss) 14%,transparent);color:var(--loss)}
+.guides{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.guides>div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.guides h4{margin:0 0 6px;font-size:15px}
+.guides ul{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14px}
+.guides table{font-size:13px}.guides td,.guides th{padding:5px 6px}
+.guides .alert{border-color:var(--loss)}
+
 /* 11 inicial */
 .oncehead{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
 .ctrls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
@@ -207,6 +230,7 @@ label.f input,label.f select{border:1px solid var(--line);background:var(--surfa
       <button class="tab" data-v="plantel">Plantel</button>
       <button class="tab" data-v="partidos">Partidos</button>
       <button class="tab" data-v="once">11 inicial</button>
+      <button class="tab" data-v="calentamiento">Calentamiento</button>
       <button class="tab" data-v="mi" id="miTab" hidden>Mi ficha</button>
     </div>
     <div class="seg" id="seg" role="group" aria-label="Torneo"></div>
@@ -2077,10 +2101,11 @@ function render(){
   const top = r.startsWith("j-")? (r==="j-"+myId?"mi":"plantel") : r.startsWith("p-")? "partidos" : r;
   document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-current", b.dataset.v===top?"page":"false"));
   $("#miTab").hidden = !myId || !D.players.some(p=>p.id===myId);
-  const main=$("#main"); main.classList.toggle("coach-on", coach); $("#seg").hidden = r==="once";
+  const main=$("#main"); main.classList.toggle("coach-on", coach); $("#seg").hidden = r==="once"||r==="calentamiento";
   if(r==="plantel") main.innerHTML = vPlantel();
   else if(r==="partidos") main.innerHTML = vPartidos();
   else if(r==="once") main.innerHTML = vOnce();
+  else if(r==="calentamiento") main.innerHTML = vWarm();
   else if(r.startsWith("p-")) main.innerHTML = vPartido(r.slice(2));
   else if(r.startsWith("j-")) main.innerHTML = vJugador(r.slice(2));
   else main.innerHTML = vResumen();
@@ -2122,7 +2147,7 @@ function vResumen(){
     <section class="panel"><h3>Goleadores</h3>${hasGoals?top("g",r=>r.g):`<p class="note">Aún no hay goles registrados en ${esc(tName(T))}.${coach?" Cárgalos al editar cada partido.":""}</p>`}</section>
     <section class="panel"><h3>Asistencias</h3>${hasAst?top("a",r=>r.a):`<p class="note">Aún no hay asistencias registradas.</p>`}</section>
   </div>`}
-  ${next.length?`<section class="panel"><div class="row"><h3 style="margin:0">Próximo partido</h3><span class="spacer"></span>${D.lineup&&D.lineup.matchId===next[0].id?`<button class="btn dark" data-go="once">Ver 11 inicial</button>`:""}</div><div class="mlist" style="margin-top:10px">${next.slice(0,1).map(matchCard).join("")}</div></section>`:""}
+  ${next.length?`<section class="panel"><div class="row"><h3 style="margin:0">Próximo partido</h3><span class="spacer"></span>${D.warmup&&D.warmup.matchId===next[0].id?`<button class="btn" data-go="calentamiento">Calentamiento</button>`:""}${D.lineup&&D.lineup.matchId===next[0].id?`<button class="btn dark" data-go="once">Ver 11 inicial</button>`:""}</div><div class="mlist" style="margin-top:10px">${next.slice(0,1).map(matchCard).join("")}</div></section>`:""}
   <section class="panel"><h3>Últimos partidos</h3><div class="mlist">${[...tm.ms].sort((a,b)=>(a.date||"").localeCompare(b.date||"")).reverse().slice(0,4).map(matchCard).join("")}</div></section>`;
 }
 
@@ -2330,11 +2355,84 @@ $("#main").addEventListener("change",e=>{
   else if(e.target.id==="once-note"){ L.note=e.target.value.trim(); onceDirty(); }
 });
 
+/* ---------- calentamiento ---------- */
+const PH=[
+ {k:1,name:"Activación general",goal:"Subir temperatura y pulsaciones de a poco (intensidad 3–5 de 10)."},
+ {k:2,name:"Movilidad dinámica",goal:"Abrir cadera, tobillos y tronco con movimientos controlados, sin rebotes."},
+ {k:3,name:"Activación muscular",goal:"Despertar glúteos, core, aductores y gemelos: las zonas que más se lesionan a esta edad."},
+ {k:4,name:"Balón y coordinación",goal:"Pases, control y rondo para entrar en ritmo de juego (intensidad 5–7)."},
+ {k:5,name:"Potenciación",goal:"Aceleraciones progresivas y cambios de dirección hasta 85–90%, con pausas completas."}];
+const WU_TPL={
+ estandar:{name:"Estándar 25′",min:[6,5,5,5,4],items:[
+  ["Trote suave ida y vuelta (2 largos)","Trote con apertura y cierre de cadera","Desplazamiento lateral y cruces suaves (carioca)","Skipping bajo y talones a glúteo, sin forzar","Trote hacia atrás"],
+  ["Balanceo de pierna adelante-atrás ×10 por pierna","Balanceo de pierna lateral ×10 por pierna","Zancada larga con rotación de tronco ×5 por lado","Sentadilla profunda con apertura de rodillas ×6","Tobillo: rodilla adelante sin despegar talón ×10 por lado"],
+  ["Puente de glúteo 2×10","Plancha frontal 20–30 s","Plancha lateral 15–20 s por lado","Aductores: Copenhague corto con rodilla apoyada ×5 por lado","Elevación de talones ×15 (gemelo y Aquiles)"],
+  ["Pases en parejas con desplazamiento, corto y largo","Control orientado y pase","Rondo 5 vs 2 a dos toques"],
+  ["Saltos suaves en el lugar (pogo) ×10","Aceleraciones de 20 m al 60%, 75% y 85%","Cambios de dirección suaves en 10 m ×2","2 sprints de 10 m al 90% con recuperación completa","Agua y últimas indicaciones"]]},
+ rapido:{name:"Rápido 20′",min:[5,4,4,4,3],items:[
+  ["Trote suave ida y vuelta","Trote con apertura y cierre de cadera","Desplazamiento lateral y carioca suave","Skipping bajo"],
+  ["Balanceo de pierna adelante-atrás y lateral ×8 por pierna","Zancada con rotación de tronco ×4 por lado","Tobillo: rodilla adelante ×8 por lado"],
+  ["Puente de glúteo ×12","Plancha lateral 15 s por lado","Copenhague corto ×4 por lado","Elevación de talones ×15"],
+  ["Pases en parejas con desplazamiento","Rondo 5 vs 2"],
+  ["Aceleraciones de 20 m al 60%, 75% y 85%","2 sprints de 10 m al 90%","Agua e indicaciones"]]},
+ frio:{name:"Noche fría 25′",min:[8,5,4,4,4],items:[
+  ["Con capa o chaqueta puesta","Trote muy suave 2′ y luego trote normal","Trote con apertura y cierre de cadera","Desplazamiento lateral y carioca","Skipping bajo y talones a glúteo","Trote hacia atrás y cambios de ritmo suaves"],
+  ["Balanceo de pierna adelante-atrás y lateral ×10 por pierna","Zancada con rotación de tronco ×5 por lado","Sentadilla profunda con apertura ×6","Tobillo: rodilla adelante ×10 por lado"],
+  ["Puente de glúteo ×12","Plancha lateral 15–20 s por lado","Copenhague corto ×5 por lado","Elevación de talones ×20"],
+  ["Pases en parejas con desplazamiento","Rondo 5 vs 2"],
+  ["Sacarse la capa recién aquí","Aceleraciones de 20 m al 60%, 75% y 85%","Cambios de dirección suaves ×2","2 sprints de 10 m al 90%","Agua e indicaciones"]]}
+};
+function wuFromTpl(k){ const t=WU_TPL[k]; const L=D.lineup; const nx=(L&&L.matchId)||((upcoming().find(m=>m.date&&m.date>=new Date().toISOString().slice(0,10))||{}).id)||"";
+  return {tpl:k, matchId:nx, blocks:PH.map((ph,i)=>({k:ph.k,min:t.min[i],items:[...t.items[i]]})), note:(D.warmup&&D.warmup.note)||""}; }
+const WU_GUIDES=`<div class="guides">
+ <div><h4>De menos a más</h4><ul><li>Orden fijo: activación general → movilidad → activación muscular → balón → potenciación.</li><li>La intensidad sube de 3/10 a 8–9/10 recién en los últimos minutos.</li><li>El calentamiento prepara, no cansa: nadie debería terminar agitado.</li></ul></div>
+ <div><h4>Tiempos para 20–25 minutos</h4><table><tbody><tr><td>Activación general</td><td>5–8′</td></tr><tr><td>Movilidad dinámica</td><td>4–5′</td></tr><tr><td>Activación muscular</td><td>4–5′</td></tr><tr><td>Balón y coordinación</td><td>4–5′</td></tr><tr><td>Potenciación</td><td>3–4′</td></tr></tbody></table><p class="note">Terminar 5–8′ antes del pitazo. Si la espera pasa de 10′, reactivar 2–3′ con trote y dos aceleraciones.</p></div>
+ <div><h4>Lo que cuida a los 45+</h4><ul><li>Gemelo y Aquiles, isquiotibiales y aductores son las zonas más delicadas: siempre activarlas.</li><li>La activación general nunca dura menos de 5′.</li><li>Sprints solo al final y de forma progresiva (60% → 75% → 85% → 90%). Nunca un pique en frío.</li></ul></div>
+ <div><h4>Estiramientos</h4><ul><li>Antes del partido: solo dinámicos (balanceos, zancadas, rotaciones).</li><li>Los estiramientos estáticos largos antes de jugar pueden bajar potencia y velocidad: dejarlos para después del partido.</li></ul></div>
+ <div><h4>Noches frías</h4><ul><li>Con frío, alargar la activación general a 7–8′ (plantilla “Noche fría”).</li><li>Mantener capa o chaqueta hasta la potenciación.</li><li>Llegar 35–40′ antes para no comprimir el calentamiento.</li></ul></div>
+ <div><h4>Suplentes</h4><ul><li>Cada 15–20′ en la banca, mover piernas: trote y balanceos.</li><li>Antes de entrar, re-calentar 3–5′: trote, movilidad de cadera y 2–3 aceleraciones.</li></ul></div>
+ <div class="alert"><h4>Señales de alerta</h4><ul><li>Dolor u opresión en el pecho, falta de aire desproporcionada, mareo o palpitaciones: parar de inmediato y avisar.</li><li>A esta edad conviene un chequeo médico preventivo anual que incluya el corazón.</li><li>Hidratarse antes y en el entretiempo.</li></ul></div>
+ <div><h4>De dónde sale</h4><ul><li>Estructura basada en el método RAMP (subir, activar, movilizar, potenciar). <a href="https://www.scienceforsport.com/warm-ups/" target="_blank" rel="noopener">Science for Sport</a></li><li>Los calentamientos estructurados de ~20′ tipo FIFA 11+ reducen las lesiones en torno a un 30%. <a href="https://bmcsportsscimedrehabil.biomedcentral.com/articles/10.1186/s13102-017-0083-z" target="_blank" rel="noopener">Sadigursky et al., 2017</a></li></ul></div>
+</div>`;
+function vWarm(){
+  const W=D.warmup;
+  const guides=`<section><h3 style="margin-top:6px">Guías para armar el calentamiento</h3>${WU_GUIDES}</section>`;
+  if(!W) return `<h2>Calentamiento</h2>`+(coach
+    ?`<div class="panel"><b>Arma el calentamiento del próximo partido</b><p class="small muted" style="margin:4px 0 12px">Parte de una plantilla de 20–25′ y ajusta tiempos y ejercicios.</p><div class="row">${Object.entries(WU_TPL).map(([k,t])=>`<button class="btn ${k==="estandar"?"pri":""}" data-act="wu-new" data-tpl="${k}">${t.name}</button>`).join("")}</div></div>`
+    :`<div class="panel empty"><b>El DT aún no publica el calentamiento</b>Mientras tanto, revisa las guías.</div>`)+guides;
+  const tot=W.blocks.reduce((a,b)=>a+(+b.min||0),0), ok=tot>=20&&tot<=25;
+  const m=D.matches.find(x=>x.id===W.matchId); const ups=upcoming(); if(m&&!ups.includes(m)) ups.unshift(m);
+  return `<div class="oncehead"><div style="min-width:0"><div class="small muted">Calentamiento${WU_TPL[W.tpl]?" · "+WU_TPL[W.tpl].name:""}</div><h2 style="font-size:28px">${m?"vs "+esc(m.rival):"Próximo partido"}</h2>${m&&m.date?`<div class="small muted">${esc(fmtDate(m.date,true))}</div>`:""}</div><span class="spacer"></span><span class="okchip ${ok?"ok":"warn"}">${tot}′ ${ok?"· dentro de 20–25′":tot<20?"· corto, apunta a 20–25′":"· largo, apunta a 20–25′"}</span></div>
+  ${coach?`<div class="panel ctrls"><label class="small muted" for="wu-match">Partido</label><select id="wu-match">${ups.map(x=>`<option value="${x.id}" ${x.id===W.matchId?"selected":""}>${esc((x.date?fmtDate(x.date)+" · ":"")+"vs "+x.rival)}</option>`).join("")}<option value="" ${!m?"selected":""}>Otro / sin partido</option></select>
+    <label class="small muted" for="wu-tpl">Plantilla</label><select id="wu-tpl">${Object.entries(WU_TPL).map(([k,t])=>`<option value="${k}" ${k===W.tpl?"selected":""}>${t.name}</option>`).join("")}</select><button class="btn" data-act="wu-apply">Aplicar plantilla</button>
+    <span class="spacer"></span><button class="btn ghost" data-act="wu-del" style="color:var(--red)">Borrar</button></div>
+    <p class="note">Ajusta los minutos y escribe un ejercicio por línea. Cuando termines, toca “Guardar y publicar”.</p>`:""}
+  <div class="wubar" role="img" aria-label="Distribución del calentamiento">${W.blocks.map(b=>`<span style="flex:${Math.max(+b.min||0,0.5)};background:var(--ph${b.k})" title="${esc(PH[b.k-1].name)} ${b.min}′">${b.min}′</span>`).join("")}</div>
+  <div class="wublocks">${W.blocks.map((b,i)=>{ const ph=PH[b.k-1];
+    return `<div class="wublk" style="--c:var(--ph${b.k})"><div class="t">${coach?`<input type="number" id="wu-min-${i}" data-wu-min="${i}" min="0" max="15" value="${b.min}">`:b.min+"′"}<small>Fase ${b.k}</small></div>
+    <div style="min-width:0"><h4>${esc(ph.name)}</h4><div class="goal">${esc(ph.goal)}</div>
+    ${coach?`<textarea id="wu-it-${i}" data-wu-items="${i}">${esc(b.items.join("\n"))}</textarea>`:`<ul>${b.items.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`}</div></div>`; }).join("")}</div>
+  ${W.note||coach?`<section class="panel"><h3>Indicaciones del DT</h3>${coach?`<input id="wu-note" type="text" value="${esc(W.note||"")}" placeholder="Ej: llegar 19:20, calentamiento parte 19:30" style="width:100%;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:8px 10px">`:`<p style="margin:0">${esc(W.note)}</p>`}</section>`:""}
+  ${guides}`;
+}
+$("#main").addEventListener("input",e=>{
+  const W=D.warmup; if(!W||!coach) return; const t=e.target;
+  if(t.dataset.wuMin!=null){ W.blocks[+t.dataset.wuMin].min=Math.max(0,parseInt(t.value,10)||0); onceDirty();
+    const tot=W.blocks.reduce((a,b)=>a+(+b.min||0),0), ok=tot>=20&&tot<=25, chip=document.querySelector(".okchip"); if(chip){ chip.className="okchip "+(ok?"ok":"warn"); chip.textContent=`${tot}′ ${ok?"· dentro de 20–25′":tot<20?"· corto, apunta a 20–25′":"· largo, apunta a 20–25′"}`; }
+    const bar=document.querySelectorAll(".wubar>span"); W.blocks.forEach((b,i)=>{ if(bar[i]){ bar[i].style.flex=Math.max(+b.min||0,.5); bar[i].textContent=b.min+"′"; } }); }
+  else if(t.dataset.wuItems!=null){ W.blocks[+t.dataset.wuItems].items=t.value.split("\n").map(x=>x.trim()).filter(Boolean); onceDirty(); }
+  else if(t.id==="wu-note"){ W.note=t.value.trim(); onceDirty(); }
+});
+$("#main").addEventListener("change",e=>{ const W=D.warmup; if(!W||!coach) return; if(e.target.id==="wu-match"){ W.matchId=e.target.value; render(); onceDirty(); } });
+
 /* ---------- clicks ---------- */
 $("#main").addEventListener("click", e=>{
   const s=e.target.closest("[data-sort]"); if(s){ const k=s.dataset.sort; sort = sort.k===k?{k,d:-sort.d}:{k,d:k==="name"?1:-1}; render(); return; }
   const act=e.target.closest("[data-act]");
   if(act){ const a=act.dataset.act;
+    if(a==="wu-new"){ D.warmup=wuFromTpl(act.dataset.tpl); render(); onceDirty("Calentamiento creado"); return; }
+    if(a==="wu-apply"){ const k=$("#wu-tpl").value; const mid=D.warmup.matchId; D.warmup=wuFromTpl(k); D.warmup.matchId=mid; render(); onceDirty("Plantilla "+WU_TPL[k].name+" aplicada"); return; }
+    if(a==="wu-del"){ D.warmup=null; render(); onceDirty("Calentamiento borrado · puedes deshacer con Descartar"); return; }
     if(a==="once-new"){ newLineup(); render(); onceDirty("11 inicial creado"); return; }
     if(a==="once-bench"){ openBench(); return; }
     if(a==="once-clear"){ D.lineup.slots.forEach(x=>{x.pid=null;x.label="";}); render(); onceDirty("Cancha vacía · puedes deshacer con Descartar"); return; }
@@ -2469,6 +2567,5 @@ async function boot(){
 boot();
 })();
 </script>
-
 
 </body></html>
