@@ -1368,6 +1368,10 @@
     "wato-warner": {
      "c": 1,
      "min": 60
+    },
+    "paulo-cecim": {
+     "c": 1,
+     "min": 25
     }
    }
   },
@@ -1448,6 +1452,10 @@
      "c": 1,
      "min": 70,
      "g": 1
+    },
+    "paulo-cecim": {
+     "c": 1,
+     "min": 40
     }
    }
   },
@@ -1522,6 +1530,10 @@
     "wato-warner": {
      "c": 1,
      "min": 70
+    },
+    "paulo-cecim": {
+     "c": 1,
+     "min": 25
     }
    }
   },
@@ -1594,6 +1606,10 @@
     "wato-warner": {
      "c": 1,
      "min": 70
+    },
+    "paulo-cecim": {
+     "c": 1,
+     "min": 40
     }
    }
   },
@@ -1676,6 +1692,10 @@
     "wato-warner": {
      "c": 1,
      "min": 65
+    },
+    "paulo-cecim": {
+     "c": 1,
+     "min": 25
     }
    }
   },
