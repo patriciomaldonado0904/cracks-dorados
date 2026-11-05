@@ -1628,11 +1628,135 @@
    "fecha": 6,
    "rival": "Tigres",
    "date": "2026-11-04",
-   "gf": null,
-   "gc": null,
+   "gf": 8,
+   "gc": 2,
    "dur": 80,
-   "played": false,
-   "stats": {}
+   "played": true,
+   "stats": {
+    "chalo": {
+     "c": 1,
+     "min": 80
+    },
+    "esteban": {
+     "c": 1,
+     "min": 60
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 70
+    },
+    "gato-espinoza": {
+     "c": 1,
+     "min": 70
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 80
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 80
+    },
+    "manuel-neira": {
+     "c": 1,
+     "min": 40,
+     "g": 1
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 70,
+     "g": 2
+    },
+    "pablo-griffith": {
+     "c": 1,
+     "min": 40,
+     "g": 1
+    },
+    "paulo-cecim": {
+     "c": 1,
+     "min": 40
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 40,
+     "g": 1
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 25
+    },
+    "titi-cerda": {
+     "c": 1,
+     "min": 40
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 40,
+     "g": 2
+    },
+    "wander-guerra": {
+     "c": 1,
+     "min": 0
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 40,
+     "g": 1
+    }
+   },
+   "live": false,
+   "events": [
+    {
+     "t": "r",
+     "pid": null,
+     "min": 1
+    },
+    {
+     "t": "g",
+     "pid": "marcelo-hernandez",
+     "min": 1
+    },
+    {
+     "t": "g",
+     "pid": "vicho-padilla",
+     "min": 1
+    },
+    {
+     "t": "g",
+     "pid": "vicho-padilla",
+     "min": 1
+    },
+    {
+     "t": "g",
+     "pid": "wato-warner",
+     "min": 1
+    },
+    {
+     "t": "g",
+     "pid": "marcelo-hernandez",
+     "min": 3
+    },
+    {
+     "t": "g",
+     "pid": "manuel-neira",
+     "min": 5
+    },
+    {
+     "t": "g",
+     "pid": "pablo-griffith",
+     "min": 31
+    },
+    {
+     "t": "r",
+     "pid": null,
+     "min": 35
+    },
+    {
+     "t": "g",
+     "pid": "renio-fabrega",
+     "min": 40
+    }
+   ]
   },
   {
    "id": "cl-p07",
@@ -1720,72 +1844,67 @@
     "label": ""
    },
    {
-    "x": 17.4,
-    "y": 68.5,
-    "pid": "hector-meli",
+    "x": 37.1,
+    "y": 76.7,
+    "pid": "rodrigo-villanueva",
     "label": ""
    },
    {
-    "x": 49.7,
-    "y": 75.4,
+    "x": 59.3,
+    "y": 76.7,
     "pid": "chalo",
     "label": ""
    },
    {
-    "x": 82.3,
-    "y": 69.1,
-    "pid": null,
-    "label": "JP"
+    "x": 37.7,
+    "y": 16.9,
+    "pid": "pablo-griffith",
+    "label": ""
    },
    {
-    "x": 22.6,
-    "y": 50.9,
+    "x": 24.3,
+    "y": 52,
     "pid": "gato-espinoza",
     "label": ""
    },
    {
-    "x": 48.4,
-    "y": 57.5,
+    "x": 49.4,
+    "y": 55.8,
     "pid": "felipe-diaz",
     "label": ""
    },
    {
-    "x": 48,
-    "y": 19.3,
-    "pid": "marcelo-hernandez",
+    "x": 10.8,
+    "y": 69.8,
+    "pid": "hector-meli",
     "label": ""
    },
    {
-    "x": 74.3,
-    "y": 51.3,
-    "pid": "wato-warner",
+    "x": 74.9,
+    "y": 54.2,
+    "pid": "titi-cerda",
     "label": ""
    },
    {
-    "x": 17,
-    "y": 23,
+    "x": 51.2,
+    "y": 39.9,
     "pid": "renio-fabrega",
     "label": ""
    },
    {
-    "x": 50.1,
-    "y": 37.3,
-    "pid": "manuel-neira",
+    "x": 62.1,
+    "y": 17.8,
+    "pid": "paulo-cecim",
     "label": ""
    },
    {
-    "x": 83,
-    "y": 23,
+    "x": 87.6,
+    "y": 69.8,
     "pid": "gonzalo-fernandez",
     "label": ""
    }
   ],
   "bench": [
-   "pablo-griffith",
-   "paulo-cecim",
-   "rodrigo-villanueva",
-   "titi-cerda",
-   "vicho-padilla",
    "wander-guerra"
   ],
   "note": ""

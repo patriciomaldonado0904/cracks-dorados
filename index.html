@@ -168,6 +168,37 @@ label.f input,label.f select{border:1px solid var(--line);background:var(--surfa
 .pmfoot a.go{color:#141845;background:var(--gold-fill);border-radius:999px;padding:7px 14px;font-weight:700;font-size:13px;text-decoration:none;white-space:nowrap}
 .pmfoot a.go:hover{background:#f0cc4a}
 main{padding-block:20px 40px!important}
+/* en vivo */
+.tab.live{color:var(--loss)}
+.tab.live::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--loss);margin-right:6px;vertical-align:1px;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.tab.live::before{animation:none}}
+.board{background:var(--navy);color:var(--navy-ink);border-radius:14px;padding:16px;display:grid;gap:12px}
+.board .sc{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;text-align:center}
+.board .tm{font-family:var(--display);font-weight:800;font-size:clamp(18px,4.5vw,28px);text-transform:uppercase;line-height:1}
+.board .nums{font-family:var(--display);font-weight:800;font-size:clamp(46px,12vw,72px);line-height:1;font-variant-numeric:tabular-nums}
+.board .meta{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;font-size:13px;opacity:.85}
+.board .acts{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.board .btn{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:var(--navy-ink)}
+.board .btn.pri{background:var(--red);border-color:var(--red)}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.lbtn{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:12px;cursor:pointer;min-height:56px;font-weight:700;-webkit-tap-highlight-color:transparent}
+.lbtn:active{transform:scale(.97)}
+.lcard{position:relative;display:grid}
+.lminus{position:absolute;top:-9px;right:-7px;width:34px;height:34px;border-radius:50%;background:var(--loss);color:#fff;border:2px solid var(--surface);font-weight:800;font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.lminus:active{transform:scale(.92)}
+.lbtn .n{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lbtn .c{font-family:var(--display);font-size:20px;color:var(--win)}
+.lbtn.has{border-color:var(--win);background:color-mix(in srgb,var(--win) 10%,var(--surface))}
+.lbtn small{display:block;font-weight:500;color:var(--muted);font-size:11px}
+.mode{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mode button{border:0;background:var(--surface);padding:8px 14px;font-weight:700;cursor:pointer;color:var(--muted)}
+.mode button[aria-pressed="true"]{background:var(--win);color:#fff}
+.mode button.a[aria-pressed="true"]{background:var(--navy);color:var(--navy-ink)}
+.evlog{display:grid;gap:4px;margin:0;padding:0;list-style:none}
+.evlog li{display:flex;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.evlog li b{font-family:var(--display);min-width:34px;color:var(--muted)}
+.svst{font-size:12px;font-weight:600}
 /* goles */
 .gchart{display:flex;gap:6px;overflow-x:auto;padding:4px 2px 2px}
 .gcol{flex:1 0 46px;max-width:70px;display:grid;justify-items:center;text-align:center;gap:2px;cursor:pointer}
@@ -257,6 +288,7 @@ main{padding-block:20px 40px!important}
       <button class="tab" data-v="plantel">Plantel</button>
       <button class="tab" data-v="partidos">Partidos</button>
       <button class="tab" data-v="goles">Goles</button>
+      <button class="tab" data-v="vivo" id="liveTab" hidden>En vivo</button>
       <button class="tab" data-v="once">11 inicial</button>
       <button class="tab" data-v="calentamiento">Calentamiento</button>
       <button class="tab" data-v="mi" id="miTab" hidden>Mi ficha</button>
@@ -1915,11 +1947,135 @@ main{padding-block:20px 40px!important}
    "fecha": 6,
    "rival": "Tigres",
    "date": "2026-11-04",
-   "gf": null,
-   "gc": null,
+   "gf": 8,
+   "gc": 2,
    "dur": 80,
-   "played": false,
-   "stats": {}
+   "played": true,
+   "stats": {
+    "chalo": {
+     "c": 1,
+     "min": 80
+    },
+    "esteban": {
+     "c": 1,
+     "min": 60
+    },
+    "felipe-diaz": {
+     "c": 1,
+     "min": 70
+    },
+    "gato-espinoza": {
+     "c": 1,
+     "min": 70
+    },
+    "gonzalo-fernandez": {
+     "c": 1,
+     "min": 80
+    },
+    "hector-meli": {
+     "c": 1,
+     "min": 80
+    },
+    "manuel-neira": {
+     "c": 1,
+     "min": 40,
+     "g": 1
+    },
+    "marcelo-hernandez": {
+     "c": 1,
+     "min": 70,
+     "g": 2
+    },
+    "pablo-griffith": {
+     "c": 1,
+     "min": 40,
+     "g": 1
+    },
+    "paulo-cecim": {
+     "c": 1,
+     "min": 40
+    },
+    "renio-fabrega": {
+     "c": 1,
+     "min": 40,
+     "g": 1
+    },
+    "rodrigo-villanueva": {
+     "c": 1,
+     "min": 25
+    },
+    "titi-cerda": {
+     "c": 1,
+     "min": 40
+    },
+    "vicho-padilla": {
+     "c": 1,
+     "min": 40,
+     "g": 2
+    },
+    "wander-guerra": {
+     "c": 1,
+     "min": 0
+    },
+    "wato-warner": {
+     "c": 1,
+     "min": 40,
+     "g": 1
+    }
+   },
+   "live": false,
+   "events": [
+    {
+     "t": "r",
+     "pid": null,
+     "min": 1
+    },
+    {
+     "t": "g",
+     "pid": "marcelo-hernandez",
+     "min": 1
+    },
+    {
+     "t": "g",
+     "pid": "vicho-padilla",
+     "min": 1
+    },
+    {
+     "t": "g",
+     "pid": "vicho-padilla",
+     "min": 1
+    },
+    {
+     "t": "g",
+     "pid": "wato-warner",
+     "min": 1
+    },
+    {
+     "t": "g",
+     "pid": "marcelo-hernandez",
+     "min": 3
+    },
+    {
+     "t": "g",
+     "pid": "manuel-neira",
+     "min": 5
+    },
+    {
+     "t": "g",
+     "pid": "pablo-griffith",
+     "min": 31
+    },
+    {
+     "t": "r",
+     "pid": null,
+     "min": 35
+    },
+    {
+     "t": "g",
+     "pid": "renio-fabrega",
+     "min": 40
+    }
+   ]
   },
   {
    "id": "cl-p07",
@@ -2007,72 +2163,67 @@ main{padding-block:20px 40px!important}
     "label": ""
    },
    {
-    "x": 17.4,
-    "y": 68.5,
-    "pid": "hector-meli",
+    "x": 37.1,
+    "y": 76.7,
+    "pid": "rodrigo-villanueva",
     "label": ""
    },
    {
-    "x": 49.7,
-    "y": 75.4,
+    "x": 59.3,
+    "y": 76.7,
     "pid": "chalo",
     "label": ""
    },
    {
-    "x": 82.3,
-    "y": 69.1,
-    "pid": null,
-    "label": "JP"
+    "x": 37.7,
+    "y": 16.9,
+    "pid": "pablo-griffith",
+    "label": ""
    },
    {
-    "x": 22.6,
-    "y": 50.9,
+    "x": 24.3,
+    "y": 52,
     "pid": "gato-espinoza",
     "label": ""
    },
    {
-    "x": 48.4,
-    "y": 57.5,
+    "x": 49.4,
+    "y": 55.8,
     "pid": "felipe-diaz",
     "label": ""
    },
    {
-    "x": 48,
-    "y": 19.3,
-    "pid": "marcelo-hernandez",
+    "x": 10.8,
+    "y": 69.8,
+    "pid": "hector-meli",
     "label": ""
    },
    {
-    "x": 74.3,
-    "y": 51.3,
-    "pid": "wato-warner",
+    "x": 74.9,
+    "y": 54.2,
+    "pid": "titi-cerda",
     "label": ""
    },
    {
-    "x": 17,
-    "y": 23,
+    "x": 51.2,
+    "y": 39.9,
     "pid": "renio-fabrega",
     "label": ""
    },
    {
-    "x": 50.1,
-    "y": 37.3,
-    "pid": "manuel-neira",
+    "x": 62.1,
+    "y": 17.8,
+    "pid": "paulo-cecim",
     "label": ""
    },
    {
-    "x": 83,
-    "y": 23,
+    "x": 87.6,
+    "y": 69.8,
     "pid": "gonzalo-fernandez",
     "label": ""
    }
   ],
   "bench": [
-   "pablo-griffith",
-   "paulo-cecim",
-   "rodrigo-villanueva",
-   "titi-cerda",
-   "vicho-padilla",
    "wander-guerra"
   ],
   "note": ""
@@ -2189,11 +2340,12 @@ function render(){
   const top = r.startsWith("j-")? (r==="j-"+myId?"mi":"plantel") : r.startsWith("p-")? "partidos" : r;
   document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-current", b.dataset.v===top?"page":"false"));
   $("#miTab").hidden = !myId || !D.players.some(p=>p.id===myId);
-  const main=$("#main"); main.classList.toggle("coach-on", coach); $("#seg").hidden = r==="once"||r==="calentamiento";
+  const main=$("#main"); main.classList.toggle("coach-on", coach); $("#seg").hidden = r==="once"||r==="calentamiento"||r==="vivo"; { const lm=liveMatch(); $("#liveTab").hidden=!(coach||lm); $("#liveTab").classList.toggle("live",!!lm); }
   if(r==="plantel") main.innerHTML = vPlantel();
   else if(r==="partidos") main.innerHTML = vPartidos();
   else if(r==="once") main.innerHTML = vOnce();
   else if(r==="goles") main.innerHTML = vGoles();
+  else if(r==="vivo") main.innerHTML = vLive();
   else if(r==="calentamiento") main.innerHTML = vWarm();
   else if(r.startsWith("p-")) main.innerHTML = vPartido(r.slice(2));
   else if(r.startsWith("j-")) main.innerHTML = vJugador(r.slice(2));
@@ -2265,7 +2417,7 @@ function matchCard(m){
   const tn = T==="all" ? `${(D.tournaments.find(x=>x.id===m.t)||{}).name||""} · ` : "";
   return `<button class="match${m.played?"":" pend"}" data-p="${m.id}">
     <span class="fe">Fecha<b>${m.fecha}</b></span>
-    <span style="min-width:0"><span class="rv" style="display:block">vs ${esc(m.rival)}</span><span class="small muted">${esc(tn)}${date?esc(date)+" · ":""}${m.played?(n?`${n} convocados`:"Minutos sin cargar"):esc(m.note||"Por jugar")}</span></span>
+    <span style="min-width:0"><span class="rv" style="display:block">vs ${esc(m.rival)}</span><span class="small muted">${esc(tn)}${date?esc(date)+" · ":""}${m.played?(n?`${n} convocados`:"Minutos sin cargar"):esc(m.note||"Por jugar")}</span>${(()=>{ const sc=Object.entries(m.stats||{}).filter(([,e])=>+e.g>0).map(([id,e])=>[(D.players.find(p=>p.id===id)||{}).name,+e.g]).filter(x=>x[0]).sort((a,b)=>b[1]-a[1]); return sc.length?`<span class="small" style="display:block;margin-top:2px;white-space:normal">⚽ ${sc.map(([n,g])=>esc(n)+(g>1?" ×"+g:"")).join(", ")}</span>`:""; })()}</span>
     <span class="res">${r?`${m.gf}–${m.gc} <span class="chip ${r}">${r}</span>`:`<span class="chip n">${m.played?"S/R":"Por jugar"}</span>`}</span>
   </button>`;
 }
@@ -2284,6 +2436,7 @@ function vPartido(id){
   <div class="panel"><div class="row"><div><div class="small muted">${esc(tn)} · Fecha ${m.fecha}${m.date?" · "+esc(new Date(m.date+"T12:00").toLocaleDateString("es-CL",{weekday:"long",day:"numeric",month:"long"})):""}</div>
     <h2 style="font-size:30px">Cracks ${r?`${m.gf} – ${m.gc}`:"vs"} ${esc(m.rival)}</h2></div><span class="spacer"></span>${r?`<span class="chip ${r}" style="font-size:15px">${r==="G"?"Victoria":r==="E"?"Empate":"Derrota"}</span>`:""}
     ${coach?`<button class="btn dark" data-act="edit" data-id="${m.id}">Editar partido</button>`:""}</div></div>
+  ${goalsDetail(m)}
   ${list.length?`<div class="tscroll"><table><thead><tr><th>Jugador</th><th>Min</th><th>G</th><th>A</th><th>TA</th><th>TR</th></tr></thead>
    <tbody>${list.map(({p,e})=>`<tr data-j="${p.id}"><td class="name"><span class="dorsal">${p.num??""}</span>${esc(p.name)}</td><td><b>${e.min==null?"s/r":e.min===0?"Banca":e.min+"′"}</b></td><td>${e.g||"–"}</td><td>${e.a||"–"}</td><td>${e.ta||"–"}</td><td>${e.tr||"–"}</td></tr>`).join("")}</tbody></table></div>
    <p class="note">${m.est?"<b>Minutos estimados</b>: no hubo registro de este partido; se calcularon con la asistencia y los minutos promedio de cada jugador. ":""}${list.length} convocados · duración ${m.dur||80} min · “Banca” = convocado sin minutos · “s/r” = minutos sin registrar.</p>`
@@ -2572,11 +2725,95 @@ function openScorers(id){
     closeSheet(); render(); onceDirty("Goleadores actualizados"); });
 }
 
+/* ---------- en vivo ---------- */
+let liveMode="g", liveAll=false, liveSave=null, liveState="";
+function liveMatch(){ return D.matches.find(m=>m.live); }
+function liveCandidate(){ const today=new Date().toISOString().slice(0,10); return liveMatch()||D.matches.filter(m=>!m.played&&m.date&&m.date<=today).sort((a,b)=>b.date.localeCompare(a.date))[0]||upcoming()[0]; }
+function liveMin(m){ return m.kick? Math.max(1,Math.floor((Date.now()-m.kick)/60000)+1) : null; }
+function liveTouch(msg){ onceDirty(msg); if(!canEdit||!artifactApi) return; liveState="Guardando…"; paintSave(); clearTimeout(liveSave); liveSave=setTimeout(()=>{ if(isDirty()) $("#saveBtn").click(); },2500); }
+function paintSave(){ const el=document.getElementById("svst"); if(el){ el.textContent=liveState; el.style.color=liveState.startsWith("Guardado")?"var(--win)":"inherit"; } }
+function vLive(){
+  const m=liveMatch();
+  if(!m){
+    if(!coach) return `<div class="panel empty"><b>No hay partido en vivo</b>Cuando empiece un partido, el marcador aparecerá aquí.</div>`;
+    const c=liveCandidate(); const ups=D.matches.filter(x=>!x.played).sort((a,b)=>(a.date||"9").localeCompare(b.date||"9"));
+    return `<h2>Partido en vivo</h2><div class="panel"><p style="margin:0 0 10px">Elige el partido y empieza. Cada gol que marques se guarda solo.</p>
+      <div class="ctrls"><select id="live-pick">${ups.map(x=>`<option value="${x.id}" ${c&&x.id===c.id?"selected":""}>${esc((x.date?fmtDate(x.date)+" · ":"")+"vs "+x.rival)}</option>`).join("")}</select>
+      <button class="btn pri" data-act="live-start">Empezar partido</button></div>
+      <p class="note">Si ya armaste el 11 inicial de ese partido, titulares y suplentes quedan como convocados.</p></div>`;
+  }
+  const sc=Object.entries(m.stats||{});
+  const ev=(m.events||[]);
+  if(!coach){ const scs=scorers(m);
+    return `<div class="board"><div class="sc"><div class="tm">Cracks</div><div class="nums">${m.gf||0} – ${m.gc||0}</div><div class="tm">${esc(m.rival)}</div></div><div class="meta"><span>● En vivo</span>${m.kick?`<span>Min ${liveMin(m)}′ aprox.</span>`:""}</div></div>
+      <section class="panel"><h3>Goles de Cracks</h3>${scs.length?`<div class="sc" style="display:flex;flex-wrap:wrap;gap:6px">${scs.map(x=>`<span class="chip2" style="border:1px solid var(--line);border-radius:999px;padding:3px 10px">${esc(x.p.name)}${x.g>1?" ×"+x.g:""}</span>`).join("")}</div>`:`<p class="note">Aún sin goles de Cracks.</p>`}</section>`; }
+  const L=D.lineup&&D.lineup.matchId===m.id?D.lineup:null;
+  const starters=L?L.slots.map(x=>x.pid).filter(Boolean):[]; const bench=L?(L.bench||[]):[];
+  const conv=sc.filter(([,e])=>e.c).map(([id])=>id);
+  let ids=[...new Set([...starters,...bench,...conv])];
+  if(liveAll||!ids.length) ids=[...new Set([...ids,...D.players.filter(p=>p.active!==false).map(p=>p.id)])];
+  const grp=id=>starters.includes(id)?0:bench.includes(id)?1:2;
+  const pl=ids.map(pById).filter(Boolean).sort((a,b)=>grp(a.id)-grp(b.id)||a.name.localeCompare(b.name));
+  const btn=p=>{ const e=(m.stats||{})[p.id]||{}; const v=liveMode==="g"?(+e.g||0):(+e.a||0);
+    return `<div class="lcard"><button class="lbtn${v?" has":""}" data-live-p="${p.id}"><span class="n">${esc(p.name)}<small>${grp(p.id)===0?"Titular":grp(p.id)===1?"Suplente":"Plantel"}${e.g?` · ${e.g} gol${e.g>1?"es":""}`:""}${e.a?` · ${e.a} asist.`:""}</small></span><span class="c">${v?(liveMode==="g"?"⚽ ":"🅰 ")+v:"+"}</span></button>${v?`<button class="lminus" data-live-m="${p.id}" aria-label="Restar ${liveMode==="g"?"un gol":"una asistencia"} a ${esc(p.name)}" title="Restar uno">−</button>`:""}</div>`; };
+  return `<div class="board"><div class="sc"><div class="tm">Cracks</div><div class="nums">${m.gf||0} – ${m.gc||0}</div><div class="tm">${esc(m.rival)}</div></div>
+    <div class="meta"><span>● En vivo</span>${m.kick?`<span>Min ${liveMin(m)}′ aprox.</span>`:""}<span id="svst" class="svst">${esc(liveState)}</span></div>
+    <div class="acts"><button class="btn" data-act="live-rival">+ Gol de ${esc(m.rival)}</button>${+m.gc?`<button class="btn" data-act="live-rival-minus">− Gol de ${esc(m.rival)}</button>`:""}<button class="btn" data-act="live-undo" ${ev.length?"":"disabled"}>Deshacer último</button><button class="btn pri" data-act="live-end">Terminar partido</button></div></div>
+  <section class="panel"><div class="row" style="margin-bottom:10px"><h3 style="margin:0">Toca al jugador que ${liveMode==="g"?"hizo el gol":"dio la asistencia"} · el “−” rojo resta uno</h3><span class="spacer"></span>
+    <div class="mode"><button data-act="live-mode" data-m="g" aria-pressed="${liveMode==="g"}">Gol</button><button class="a" data-act="live-mode" data-m="a" aria-pressed="${liveMode==="a"}">Asistencia</button></div></div>
+    <div class="lgrid">${pl.map(btn).join("")}</div>
+    <div class="row" style="margin-top:10px"><button class="btn ghost small" data-act="live-all">${liveAll?"Mostrar solo convocados":"Mostrar todo el plantel"}</button></div></section>
+  <section class="panel"><h3>Registro del partido</h3>${ev.length?`<ul class="evlog">${[...ev].reverse().map(x=>`<li><b>${x.min?x.min+"′":"–"}</b>${x.t==="r"?`Gol de ${esc(m.rival)}`:x.t==="g"?`⚽ Gol de ${esc((pById(x.pid)||{}).name||"?")}`:`Asistencia de ${esc((pById(x.pid)||{}).name||"?")}`}</li>`).join("")}</ul>`:`<p class="note">Todavía no hay goles.</p>`}</section>`;
+}
+function liveAdd(m,t,pid){ m.events=m.events||[]; m.stats=m.stats||{};
+  if(t==="r"){ m.gc=(+m.gc||0)+1; }
+  else { let st=m.stats[pid]; if(!st) st=m.stats[pid]={c:1}; if(t==="g"){ st.g=(+st.g||0)+1; m.gf=(+m.gf||0)+1; } else st.a=(+st.a||0)+1; }
+  m.events.push({t,pid:pid||null,min:liveMin(m)}); }
+function liveRemove(m,t,pid){ m.stats=m.stats||{}; m.events=m.events||[];
+  for(let i=m.events.length-1;i>=0;i--){ const x=m.events[i]; if(x.t===t&&(t==="r"||x.pid===pid)){ m.events.splice(i,1); break; } }
+  if(t==="r"){ m.gc=Math.max(0,(+m.gc||0)-1); return; }
+  const st=m.stats[pid]; if(!st) return;
+  if(t==="g"){ if(+st.g>0){ st.g=+st.g-1; m.gf=Math.max(0,(+m.gf||0)-1); } if(!st.g) delete st.g; }
+  else { if(+st.a>0) st.a=+st.a-1; if(!st.a) delete st.a; } }
+function liveUndo(m){ const x=(m.events||[]).pop(); if(!x) return;
+  if(x.t==="r") m.gc=Math.max(0,(+m.gc||0)-1);
+  else { const st=m.stats[x.pid]; if(st){ if(x.t==="g"){ st.g=Math.max(0,(+st.g||0)-1); if(!st.g) delete st.g; m.gf=Math.max(0,(+m.gf||0)-1); } else { st.a=Math.max(0,(+st.a||0)-1); if(!st.a) delete st.a; } } } }
+$("#main").addEventListener("click",e=>{
+  const mn=e.target.closest("[data-live-m]"); if(mn&&coach){ const m=liveMatch(); if(!m) return; const p=pById(mn.dataset.liveM); liveRemove(m,liveMode,p.id); render(); liveTouch(liveMode==="g"?`Gol restado a ${p.name}`:`Asistencia restada a ${p.name}`); return; }
+  const b=e.target.closest("[data-live-p]"); if(!b||!coach) return; const m=liveMatch(); if(!m) return;
+  const p=pById(b.dataset.liveP); liveAdd(m,liveMode,p.id); render(); liveTouch(liveMode==="g"?`⚽ Gol de ${p.name}`:`Asistencia de ${p.name}`);
+});
+setInterval(()=>{ if(route()==="vivo"&&liveMatch()&&!document.querySelector(".sheet")&&!drag){ const el=document.querySelector(".board .meta span:nth-child(2)"); const m=liveMatch(); if(el&&m.kick) el.textContent=`Min ${liveMin(m)}′ aprox.`; } },30000);
+
+/* ---------- detalle de goles por partido ---------- */
+function goalsDetail(m){
+  if(!m.played||result(m)==null) return "";
+  const sc=scorers(m); const as=Object.entries(m.stats||{}).filter(([,e])=>+e.a>0).map(([id,e])=>({p:pById(id),a:+e.a})).filter(x=>x.p).sort((a,b)=>b.a-a.a);
+  const ev=(m.events||[]).filter(x=>x.t==="g"||x.t==="r");
+  let gf=0,gc=0; const seq=ev.map(x=>{ if(x.t==="g") gf++; else gc++; return {x,gf,gc}; });
+  const tot=sc.reduce((a,b)=>a+b.g,0);
+  if(!sc.length&&!as.length&&!ev.length) return +m.gf?`<section class="panel"><h3>Goles del partido</h3><p class="note">Goleadores sin cargar.${coach?" Cárgalos desde la pestaña Goles.":""}</p></section>`:"";
+  return `<section class="panel"><h3>Goles del partido</h3>
+    ${sc.length?`<div class="sc" style="display:flex;flex-wrap:wrap;gap:6px">${sc.map(x=>`<span data-j="${x.p.id}" style="cursor:pointer;border:1px solid var(--win);background:color-mix(in srgb,var(--win) 10%,var(--surface));border-radius:999px;padding:4px 12px;font-weight:700">⚽ ${esc(x.p.name)}${x.g>1?" ×"+x.g:""}</span>`).join("")}${tot<+m.gf?`<span class="muted small" style="align-self:center">${+m.gf-tot} sin asignar</span>`:""}</div>`:""}
+    ${as.length?`<p class="small" style="margin:10px 0 0"><b>Asistencias:</b> ${as.map(x=>esc(x.p.name)+(x.a>1?" ×"+x.a:"")).join(", ")}</p>`:""}
+    ${seq.length?`<h3 style="margin-top:14px">Cómo se dio</h3><ol class="evlog">${seq.map(({x,gf,gc})=>`<li><b>${gf}–${gc}</b>${x.t==="r"?`<span class="muted">Gol de ${esc(m.rival)}</span>`:`⚽ ${esc((pById(x.pid)||{}).name||"?")}`}</li>`).join("")}</ol>`:""}
+  </section>`;
+}
+
 /* ---------- clicks ---------- */
 $("#main").addEventListener("click", e=>{
   const s=e.target.closest("[data-sort]"); if(s){ const k=s.dataset.sort; sort = sort.k===k?{k,d:-sort.d}:{k,d:k==="name"?1:-1}; render(); return; }
   const act=e.target.closest("[data-act]");
   if(act){ const a=act.dataset.act;
+    if(a==="live-start"){ const m=D.matches.find(x=>x.id===$("#live-pick").value); if(!m) return; m.live=true; m.played=true; m.gf=+m.gf||0; m.gc=+m.gc||0; m.kick=m.kick||Date.now(); m.stats=m.stats||{};
+      const L=D.lineup&&D.lineup.matchId===m.id?D.lineup:null; if(L){ [...L.slots.map(x=>x.pid),...(L.bench||[])].filter(Boolean).forEach(pid=>{ m.stats[pid]=m.stats[pid]||{c:1}; }); }
+      if(T!=="all"&&T!==m.t){ T=m.t; LS.set("cd.t",T); } render(); liveTouch("Partido en vivo vs "+m.rival); return; }
+    if(a==="live-rival"){ const m=liveMatch(); liveAdd(m,"r"); render(); liveTouch("Gol de "+m.rival); return; }
+    if(a==="live-rival-minus"){ const m=liveMatch(); liveRemove(m,"r"); render(); liveTouch("Gol de "+m.rival+" restado"); return; }
+    if(a==="live-undo"){ const m=liveMatch(); liveUndo(m); render(); liveTouch("Deshecho"); return; }
+    if(a==="live-mode"){ liveMode=act.dataset.m; render(); return; }
+    if(a==="live-all"){ liveAll=!liveAll; render(); return; }
+    if(a==="live-end"){ const m=liveMatch(); m.live=false; delete m.kick; render(); liveTouch(`Final: Cracks ${m.gf}–${m.gc} ${m.rival}`); openMatch(m.id); return; }
     if(a==="g-edit"){ openScorers(act.dataset.id); return; }
     if(a==="wu-new"){ D.warmup=wuFromTpl(act.dataset.tpl); render(); onceDirty("Calentamiento creado"); return; }
     if(a==="wu-apply"){ const k=$("#wu-tpl").value; const mid=D.warmup.matchId; D.warmup=wuFromTpl(k); D.warmup.matchId=mid; render(); onceDirty("Plantilla "+WU_TPL[k].name+" aplicada"); return; }
@@ -2684,6 +2921,7 @@ $("#saveBtn").onclick=async()=>{
     const json=JSON.stringify(D,null,1);
     await artifactApi.publish({"data.json": json});
     saved=JSON.stringify(D); try{sessionStorage.removeItem("cd.draft")}catch(e){}
+    liveState="Guardado ✓ "+new Date().toLocaleTimeString("es-CL",{hour:"2-digit",minute:"2-digit"});
     toast("Guardado. Los jugadores ya ven los datos nuevos."); render();
   }catch(err){
     const c=err&&err.code;
