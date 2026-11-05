@@ -1102,7 +1102,8 @@
     },
     "manuel-neira": {
      "c": 1,
-     "g": 1
+     "g": 1,
+     "min": 40
     }
    },
    "est": true
@@ -1181,7 +1182,8 @@
     },
     "manuel-neira": {
      "c": 1,
-     "g": 1
+     "g": 1,
+     "min": 40
     }
    },
    "est": true
