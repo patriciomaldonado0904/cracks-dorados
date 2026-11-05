@@ -1383,7 +1383,8 @@
     },
     "titi-barrales": {
      "c": 1,
-     "min": 40
+     "min": 40,
+     "g": 1
     },
     "titi-cerda": {
      "c": 1,
@@ -1391,11 +1392,13 @@
     },
     "vicho-padilla": {
      "c": 1,
-     "min": 70
+     "min": 70,
+     "g": 2
     },
     "wato-warner": {
      "c": 1,
-     "min": 70
+     "min": 70,
+     "g": 1
     }
    }
   },
@@ -1464,7 +1467,8 @@
     },
     "vicho-padilla": {
      "c": 1,
-     "min": 65
+     "min": 65,
+     "g": 1
     },
     "wato-warner": {
      "c": 1,
@@ -1497,7 +1501,8 @@
     },
     "felipe-diaz": {
      "c": 1,
-     "min": 80
+     "min": 80,
+     "g": 1
     },
     "gato-espinoza": {
      "c": 1,
@@ -1525,11 +1530,13 @@
     },
     "renio-fabrega": {
      "c": 1,
-     "min": 70
+     "min": 70,
+     "g": 3
     },
     "titi-barrales": {
      "c": 1,
-     "min": 40
+     "min": 40,
+     "g": 2
     },
     "vicho-padilla": {
      "c": 1,
@@ -1614,7 +1621,8 @@
     },
     "vicho-padilla": {
      "c": 1,
-     "min": 60
+     "min": 60,
+     "g": 1
     },
     "wato-warner": {
      "c": 1,
