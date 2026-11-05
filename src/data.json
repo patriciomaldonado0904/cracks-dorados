@@ -275,7 +275,8 @@
     },
     "renio-fabrega": {
      "c": 1,
-     "min": 80
+     "min": 80,
+     "g": 2
     },
     "pablo-griffith": {
      "c": 1
@@ -315,11 +316,13 @@
     },
     "hector-meli": {
      "c": 1,
-     "min": 60
+     "min": 60,
+     "g": 1
     },
     "gonzalo-fernandez": {
      "c": 1,
-     "min": 60
+     "min": 60,
+     "g": 1
     },
     "rodrigo-villanueva": {
      "c": 1,
@@ -335,7 +338,8 @@
     },
     "marcelo-hernandez": {
      "c": 1,
-     "min": 50
+     "min": 50,
+     "g": 1
     },
     "titi-cerda": {
      "c": 1,
@@ -343,15 +347,18 @@
     },
     "vicho-padilla": {
      "c": 1,
-     "min": 50
+     "min": 50,
+     "g": 1
     },
     "ghazy-yarur": {
      "c": 1,
-     "min": 70
+     "min": 70,
+     "g": 1
     },
     "renio-fabrega": {
      "c": 1,
-     "min": 65
+     "min": 65,
+     "g": 1
     },
     "pablo-griffith": {
      "c": 1,
@@ -404,11 +411,13 @@
     },
     "felipe-diaz": {
      "c": 1,
-     "min": 80
+     "min": 80,
+     "g": 1
     },
     "marcelo-hernandez": {
      "c": 1,
-     "min": 80
+     "min": 80,
+     "g": 1
     },
     "maja": {
      "c": 1,
@@ -420,7 +429,8 @@
     },
     "vicho-padilla": {
      "c": 1,
-     "min": 80
+     "min": 80,
+     "g": 1
     },
     "ghazy-yarur": {
      "c": 1,
@@ -428,7 +438,8 @@
     },
     "titi-barrales": {
      "c": 1,
-     "min": 30
+     "min": 30,
+     "g": 2
     }
    }
   },
@@ -485,7 +496,8 @@
     },
     "wander-guerra": {
      "c": 1,
-     "min": 40
+     "min": 40,
+     "g": 1
     },
     "felipe-diaz": {
      "c": 1,
@@ -497,7 +509,8 @@
     },
     "gato-espinoza": {
      "c": 1,
-     "min": 30
+     "min": 30,
+     "g": 1
     },
     "titi-cerda": {
      "c": 1,
@@ -517,15 +530,18 @@
     },
     "renio-fabrega": {
      "c": 1,
-     "min": 30
+     "min": 30,
+     "g": 1
     },
     "titi-barrales": {
      "c": 1,
-     "min": 30
+     "min": 30,
+     "g": 2
     },
     "pablo-griffith": {
      "c": 1,
-     "min": 30
+     "min": 30,
+     "g": 1
     }
    }
   },
@@ -602,7 +618,8 @@
     },
     "vicho-padilla": {
      "c": 1,
-     "min": 60
+     "min": 60,
+     "g": 1
     },
     "ghazy-yarur": {
      "c": 1,
@@ -610,7 +627,8 @@
     },
     "titi-barrales": {
      "c": 1,
-     "min": 40
+     "min": 40,
+     "g": 1
     },
     "pablo-griffith": {
      "c": 1,
@@ -683,7 +701,8 @@
     },
     "marcelo-hernandez": {
      "c": 1,
-     "min": 40
+     "min": 40,
+     "g": 1
     },
     "titi-cerda": {
      "c": 1,
@@ -699,7 +718,8 @@
     },
     "titi-barrales": {
      "c": 1,
-     "min": 80
+     "min": 80,
+     "g": 1
     }
    }
   },
@@ -768,11 +788,13 @@
     },
     "vicho-padilla": {
      "c": 1,
-     "min": 60
+     "min": 60,
+     "g": 1
     },
     "renio-fabrega": {
      "c": 1,
-     "min": 50
+     "min": 50,
+     "g": 1
     },
     "titi-barrales": {
      "c": 1,
@@ -853,7 +875,8 @@
     },
     "vicho-padilla": {
      "c": 1,
-     "min": 80
+     "min": 80,
+     "g": 1
     },
     "ghazy-yarur": {
      "c": 1,
@@ -914,7 +937,8 @@
     },
     "vicho-padilla": {
      "c": 1,
-     "min": 80
+     "min": 80,
+     "g": 1
     },
     "ghazy-yarur": {
      "c": 1,
@@ -922,11 +946,13 @@
     },
     "renio-fabrega": {
      "c": 1,
-     "min": 80
+     "min": 80,
+     "g": 1
     },
     "pablo-griffith": {
      "c": 1,
-     "min": 70
+     "min": 70,
+     "g": 1
     }
    }
   },
@@ -975,7 +1001,8 @@
     },
     "guille-lizama": {
      "c": 1,
-     "min": 40
+     "min": 40,
+     "g": 1
     },
     "felipe-diaz": {
      "c": 1,
@@ -983,11 +1010,13 @@
     },
     "marcelo-hernandez": {
      "c": 1,
-     "min": 80
+     "min": 80,
+     "g": 1
     },
     "manuel-neira": {
      "c": 1,
-     "min": 40
+     "min": 40,
+     "g": 2
     },
     "vicho-padilla": {
      "c": 1,
@@ -1052,7 +1081,8 @@
     },
     "marcelo-hernandez": {
      "c": 1,
-     "min": 55
+     "min": 55,
+     "g": 1
     },
     "vicho-padilla": {
      "c": 1,
@@ -1069,6 +1099,10 @@
     "andres-rebolledo": {
      "c": 1,
      "min": 35
+    },
+    "manuel-neira": {
+     "c": 1,
+     "g": 1
     }
    },
    "est": true
@@ -1130,7 +1164,8 @@
     },
     "vicho-padilla": {
      "c": 1,
-     "min": 65
+     "min": 65,
+     "g": 2
     },
     "renio-fabrega": {
      "c": 1,
@@ -1143,6 +1178,10 @@
     "pablo-griffith": {
      "c": 1,
      "min": 55
+    },
+    "manuel-neira": {
+     "c": 1,
+     "g": 1
     }
    },
    "est": true
@@ -1204,11 +1243,13 @@
     },
     "vicho-padilla": {
      "c": 1,
-     "min": 65
+     "min": 65,
+     "g": 1
     },
     "renio-fabrega": {
      "c": 1,
-     "min": 60
+     "min": 60,
+     "g": 2
     },
     "manuel-neira": {
      "c": 1,
