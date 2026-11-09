@@ -161,6 +161,10 @@ label.f input,label.f select{border:1px solid var(--line);background:var(--surfa
 .savebar{position:fixed;left:0;right:0;bottom:0;z-index:15;background:var(--navy);color:var(--navy-ink);padding-bottom:env(safe-area-inset-bottom,0px)}
 .savebar .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-block:10px}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--ink);color:var(--bg);padding:9px 14px;border-radius:8px;font-weight:600;font-size:14px;max-width:calc(100% - 32px)}
+.newver{position:fixed;left:50%;transform:translateX(-50%);top:calc(12px + env(safe-area-inset-top,0px));z-index:40;display:flex;gap:12px;align-items:center;background:var(--navy);color:var(--navy-ink);border:2px solid var(--gold-fill);border-radius:999px;padding:8px 8px 8px 16px;font-weight:600;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.3);max-width:calc(100% - 24px)}
+.newver[hidden]{display:none}
+.newver{width:max-content;white-space:nowrap}
+.newver button{border:0;background:var(--gold-fill);color:#141845;border-radius:999px;padding:7px 14px;font-weight:800;cursor:pointer}
 .confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--surface-2);border:1px solid var(--red);border-radius:8px;padding:8px 10px}
 
 /* firma PM Coach */
@@ -269,6 +273,8 @@ main{padding-block:20px 40px!important}
 .pick.on{border-color:var(--red)}
 .pick .dorsal{min-width:0}
 .pick small{color:var(--muted);font-size:12px}
+.pickgrp{font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);padding:8px 2px 2px;border-bottom:2px solid var(--red);margin-top:4px}
+.pickgrp small{font-family:var(--body);font-weight:600;color:var(--muted);letter-spacing:0;text-transform:none;margin-left:6px}
 @media (max-width:560px){.tok{width:76px}.tok .nm{max-width:76px;font-size:10.5px;padding:2px 5px}.tok .shirt{width:40px;height:47px}}
 @media (max-width:560px){.crest{width:52px}.band .wrap{padding-block:90px 16px}.bignum{font-size:44px}}
 @media (prefers-reduced-motion:no-preference){.rank .fill,.col .bx b,.pct i b{transition:height .3s,width .3s}}
@@ -283,6 +289,7 @@ main{padding-block:20px 40px!important}
       <div class="sub" id="teamSub">Liga Independiente de Fútbol · Temporada 2026</div>
     </div>
     <button class="coach-btn" id="coachBtn" hidden aria-pressed="false">Modo DT</button>
+    <button class="coach-btn" id="refreshBtn" hidden title="Cargar la última versión">↻ Actualizar</button>
   </div>
 </header>
 <nav class="bar" aria-label="Secciones">
@@ -320,6 +327,7 @@ main{padding-block:20px 40px!important}
   </div>
 </div>
 <div class="toast" id="toast" hidden></div>
+<div class="newver" id="newver" hidden role="status"><span>Hay datos nuevos del equipo</span><button type="button" id="newverBtn">Actualizar</button></div>
 
 <script type="application/json" id="cd-data">{
  "team": "Cracks Dorados",
@@ -2168,7 +2176,56 @@ main{padding-block:20px 40px!important}
    "gc": null,
    "dur": 80,
    "played": false,
-   "stats": {},
+   "stats": {
+    "esteban": {
+     "c": 1
+    },
+    "chalo": {
+     "c": 1
+    },
+    "gonzalo-fernandez": {
+     "c": 1
+    },
+    "hector-meli": {
+     "c": 1
+    },
+    "juan-pablo-flores": {
+     "c": 1
+    },
+    "luisfe-navarro": {
+     "c": 1
+    },
+    "rodrigo-villanueva": {
+     "c": 1
+    },
+    "felipe-diaz": {
+     "c": 1
+    },
+    "gato-espinoza": {
+     "c": 1
+    },
+    "guille-lizama": {
+     "c": 1
+    },
+    "wato-warner": {
+     "c": 1
+    },
+    "marcelo-hernandez": {
+     "c": 1
+    },
+    "pablo-griffith": {
+     "c": 1
+    },
+    "paulo-cecim": {
+     "c": 1
+    },
+    "renio-fabrega": {
+     "c": 1
+    },
+    "vicho-padilla": {
+     "c": 1
+    }
+   },
    "note": "Reprogramado (fecha 5 de la liga)"
   },
   {
@@ -2234,73 +2291,73 @@ main{padding-block:20px 40px!important}
   }
  ],
  "lineup": {
-  "matchId": "cl-p06",
+  "matchId": "cl-p07",
   "formation": "3-4-3",
   "slots": [
    {
     "x": 50,
     "y": 89,
-    "pid": "esteban",
+    "pid": null,
     "label": ""
    },
    {
-    "x": 37.1,
-    "y": 76.7,
-    "pid": "rodrigo-villanueva",
+    "x": 35.9,
+    "y": 63.7,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 59.3,
-    "y": 76.7,
-    "pid": "chalo",
+    "x": 65.1,
+    "y": 63.9,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 37.7,
-    "y": 16.9,
-    "pid": "pablo-griffith",
+    "x": 50.4,
+    "y": 15.9,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 24.3,
-    "y": 52,
-    "pid": "gato-espinoza",
+    "x": 21.4,
+    "y": 21.5,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 49.4,
-    "y": 55.8,
-    "pid": "felipe-diaz",
+    "x": 38.1,
+    "y": 47.9,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 10.8,
-    "y": 69.8,
-    "pid": "hector-meli",
+    "x": 12.3,
+    "y": 47.2,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 74.9,
-    "y": 54.2,
-    "pid": "titi-cerda",
+    "x": 63,
+    "y": 47.9,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 51.2,
-    "y": 39.9,
-    "pid": "renio-fabrega",
+    "x": 51.1,
+    "y": 32.7,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 62.1,
-    "y": 17.8,
-    "pid": "paulo-cecim",
+    "x": 79.5,
+    "y": 22.2,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 87.6,
-    "y": 69.8,
-    "pid": "gonzalo-fernandez",
+    "x": 90.3,
+    "y": 47.4,
+    "pid": null,
     "label": ""
    }
   ],
@@ -2475,6 +2532,8 @@ function vResumen(){
 
 const POS_GROUPS=[["Arquero","Arqueros"],["Defensa","Defensas"],["Volante","Volantes"],["Delantero","Delanteros"],["","Sin posición"]];
 const posKey = p => p==="Mediocampista" ? "Volante" : (["Arquero","Defensa","Volante","Delantero"].includes(p) ? p : "");
+// agrupa jugadores por posición: head(label,lista) y row(p) devuelven HTML
+function byPos(pl,row,head){ return POS_GROUPS.map(([k,label])=>{ const g=pl.filter(p=>posKey(p.pos)===k); return g.length?head(label,g)+g.map(row).join(""):""; }).join(""); }
 function vPlantel(){
   const A=agg(T);
   const cols=[["name","Jugador"],["conv","Conv."],["pj","PJ"],["min","Min"],["pct","% min"],["prom","Prom"],["g","G"],["a","A"],["ta","TA"],["tr","TR"]];
@@ -2627,7 +2686,7 @@ function openSlot(i){
   $("#sheetRoot").innerHTML=`<div class="sheet" role="dialog" aria-modal="true" aria-label="Elegir jugador"><div class="card">
     <div class="row"><h2>${i===0?"Arquero":"Elegir jugador"}</h2><span class="spacer"></span><button type="button" class="btn ghost" data-x>Cerrar</button></div>
     <input id="pick-q" type="text" placeholder="Buscar jugador" style="border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:8px 10px">
-    <div class="picklist" id="picklist">${pl.map(row).join("")}</div>
+    <div class="picklist" id="picklist">${byPos(pl,row,(label,g)=>`<div class="pickgrp">${label}<small>${g.length}</small></div>`)}</div>
     <div class="row"><input id="pick-free" type="text" placeholder="O escribe otro nombre" value="${esc(s.pid?"":s.label||"")}" style="flex:1;min-width:140px;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:8px 10px"><button type="button" class="btn" id="pick-freebtn">Usar nombre</button></div>
     <div class="row"><button type="button" class="btn ghost" id="pick-clear" style="color:var(--red)">Dejar puesto vacío</button><span class="spacer"></span></div>
   </div></div>`;
@@ -2648,7 +2707,7 @@ function openBench(){
   const pl=D.players.filter(p=>p.active!==false && !inXI.has(p.id)).sort((a,b)=>a.name.localeCompare(b.name));
   $("#sheetRoot").innerHTML=`<div class="sheet" role="dialog" aria-modal="true" aria-label="Suplentes"><form class="card" id="bform">
     <div class="row"><h2>Suplentes</h2><span class="spacer"></span><button type="button" class="btn ghost" data-x>Cerrar</button></div>
-    <div class="picklist">${pl.map(p=>`<label class="pick" style="grid-template-columns:30px minmax(0,1fr) auto"><span class="dorsal">${p.num??""}</span><span>${esc(p.name)}</span><input type="checkbox" id="b-${p.id}" value="${p.id}" ${(L.bench||[]).includes(p.id)?"checked":""} style="width:18px;height:18px;accent-color:var(--red)"></label>`).join("")||`<p class="note">Todos los jugadores activos están en la cancha.</p>`}</div>
+    <div class="picklist">${byPos(pl,p=>`<label class="pick" style="grid-template-columns:30px minmax(0,1fr) auto"><span class="dorsal">${p.num??""}</span><span>${esc(p.name)}</span><input type="checkbox" id="b-${p.id}" value="${p.id}" ${(L.bench||[]).includes(p.id)?"checked":""} style="width:18px;height:18px;accent-color:var(--red)"></label>`,(label,g)=>`<div class="pickgrp">${label}<small>${g.length}</small></div>`)||`<p class="note">Todos los jugadores activos están en la cancha.</p>`}</div>
     <div class="row"><span class="spacer"></span><button type="button" class="btn" data-x>Cancelar</button><button type="submit" class="btn pri">Listo</button></div></form></div>`;
   const f=$("#bform");
   f.addEventListener("click",e=>{ if(e.target.closest("[data-x]")) closeSheet(); });
@@ -2937,16 +2996,21 @@ function openMatch(id){
       <label class="f">Goles rival<input id="f-gc" type="number" min="0" value="${m.gc??""}"></label>
     </div>
     <label class="row small" style="cursor:pointer"><input type="checkbox" id="f-played" ${m.played?"checked":""}> Partido jugado (desmarca si está pendiente o suspendido)</label>
-    <div class="row"><h3 style="margin:0">Convocados y minutos</h3><span class="spacer"></span><button type="button" class="btn" id="fillDur">Minutos completos a marcados sin dato</button></div>
-    <div class="tscroll ed"><table><thead><tr><th>Jugador</th><th>Min</th><th>G</th><th>A</th><th>TA</th><th>TR</th></tr></thead><tbody>${pl.map(row).join("")}</tbody></table></div>
+    <div class="row"><h3 style="margin:0">Convocados y minutos · <span id="cit-total"></span></h3><span class="spacer"></span><button type="button" class="btn" id="fillDur">Minutos completos a marcados sin dato</button></div>
+    <div class="tscroll ed"><table><thead><tr><th>Jugador</th><th>Min</th><th>G</th><th>A</th><th>TA</th><th>TR</th></tr></thead><tbody>${byPos(pl,row,(label,g)=>`<tr class="grp"><td colspan="6">${label}<small class="gcount" data-grp="${label}">${g.filter(p=>(m.stats[p.id]||{}).c).length} de ${g.length} citados</small></td></tr>`)}</tbody></table></div>
     <p class="note">Marca a los convocados. Minutos 0 = quedó en la banca. Deja minutos vacío si no los registraste.</p>
     <div class="row" id="mfoot">${id?`<button type="button" class="btn ghost" id="delM" style="color:var(--red)">Eliminar partido</button>`:""}<span class="spacer"></span><button type="button" class="btn" data-x>Cancelar</button><button type="submit" class="btn pri">Listo</button></div>
   </form></div>`;
   const f=$("#mform");
   f.addEventListener("click", e=>{ if(e.target.closest("[data-x]")) closeSheet(); });
-  f.addEventListener("change", e=>{ if(e.target.classList.contains("c")) e.target.closest("tr").classList.toggle("off", !e.target.checked); });
+  const recount=()=>{ let grp=null,c=0,t=0,tot=0; const flush=()=>{ if(grp) grp.textContent=`${c} de ${t} citados`; };
+    f.querySelectorAll("tbody tr").forEach(tr=>{ if(tr.classList.contains("grp")){ flush(); grp=tr.querySelector(".gcount"); c=0; t=0; } else { t++; if(tr.querySelector(".c").checked){ c++; tot++; } } }); flush();
+    const el=$("#cit-total"); if(el) el.textContent=`${tot} citados`; };
+  f.addEventListener("change", e=>{ if(e.target.classList.contains("c")){ e.target.closest("tr").classList.toggle("off", !e.target.checked); recount(); } });
+  f.addEventListener("input", ()=>setTimeout(recount));
+  recount();
   f.addEventListener("input", e=>{ const tr=e.target.closest("tbody tr"); if(tr && !e.target.classList.contains("c") && e.target.value!==""){ const c=tr.querySelector(".c"); if(!c.checked){c.checked=true; tr.classList.remove("off");} } });
-  $("#fillDur").onclick=()=>{ const d=+$("#f-dur").value||80; f.querySelectorAll("tbody tr").forEach(tr=>{ if(tr.querySelector(".c").checked){ const i=tr.querySelector(".min"); if(i.value==="") i.value=d; } }); };
+  $("#fillDur").onclick=()=>{ const d=+$("#f-dur").value||80; f.querySelectorAll("tbody tr[data-id]").forEach(tr=>{ if(tr.querySelector(".c").checked){ const i=tr.querySelector(".min"); if(i.value==="") i.value=d; } }); };
   if(id) $("#delM").onclick=()=>{ $("#mfoot").innerHTML=`<div class="confirm" style="flex:1"><span>¿Eliminar Fecha ${m.fecha} vs ${esc(m.rival)}?</span><span class="spacer"></span><button type="button" class="btn" data-x>No</button><button type="button" class="btn pri" id="delYes">Sí, eliminar</button></div>`;
     $("#delYes").onclick=()=>{ D.matches=D.matches.filter(x=>x.id!==id); closeSheet(); dirty("Partido eliminado"); go(T==="all"?"partidos":"partidos"); }; };
   f.addEventListener("submit", e=>{ e.preventDefault();
@@ -2954,7 +3018,7 @@ function openMatch(id){
     m.t=$("#f-t").value; m.fecha=parseInt($("#f-fecha").value,10)||1; m.rival=$("#f-rival").value.trim(); m.date=$("#f-date").value;
     m.dur=parseInt($("#f-dur").value,10)||80; m.gf=num($("#f-gf").value); m.gc=num($("#f-gc").value); m.played=$("#f-played").checked;
     if(!m.rival){ $("#f-rival").focus(); return; }
-    const st={}; f.querySelectorAll("tbody tr").forEach(tr=>{ if(!tr.querySelector(".c").checked) return; const e={c:1};
+    const st={}; f.querySelectorAll("tbody tr[data-id]").forEach(tr=>{ if(!tr.querySelector(".c").checked) return; const e={c:1};
       const mn=num(tr.querySelector(".min").value); if(mn!=null) e.min=mn;
       ["g","a","ta","tr"].forEach(k=>{ const v=num(tr.querySelector("."+k).value); if(v) e[k]=v; }); st[tr.dataset.id]=e; });
     m.stats=st; delete m.est;
@@ -3034,8 +3098,34 @@ async function boot(){
   }
 }
 boot();
+
+/* ---------- web pública: actualizar ---------- */
+if(/github\.io$/.test(location.hostname)){
+  const rb=$("#refreshBtn"); rb.hidden=false;
+  const cur=((document.getElementById("cd-data")||{}).textContent)||"";
+  async function hardRefresh(){
+    rb.textContent="Actualizando…"; rb.disabled=true;
+    try{ const ks=await caches.keys(); await Promise.all(ks.map(k=>caches.delete(k))); }catch(e){}
+    try{ const rs=navigator.serviceWorker? await navigator.serviceWorker.getRegistrations():[]; for(const r of rs){ try{ await r.update(); }catch(e){} } }catch(e){}
+    location.replace(location.pathname+"?v="+Date.now()+location.hash);
+  }
+  rb.onclick=hardRefresh; $("#newverBtn").onclick=hardRefresh;
+  let last=0;
+  async function check(){
+    if(Date.now()-last<20000) return; last=Date.now();
+    try{ const t=await (await fetch(location.pathname+"?check="+Date.now(),{cache:"no-store"})).text();
+      const m=t.match(/<script type="application\/json" id="cd-data">([\s\S]*?)<\/script>/);
+      if(m && m[1]!==cur) $("#newver").hidden=false; }catch(e){}
+  }
+  document.addEventListener("visibilitychange",()=>{ if(!document.hidden) check(); });
+  addEventListener("focus",check); setTimeout(check,4000); setInterval(check,5*60000);
+  // limpiar el ?v= de la dirección después de recargar
+  if(/[?&](v|check)=/.test(location.search)){ try{ history.replaceState(null,"",location.pathname+location.hash); }catch(e){} }
+}
 })();
 </script>
+
+
 
 <style>
 .cdi-btn{position:absolute;top:14px;right:max(16px,env(safe-area-inset-right,0px));z-index:2;display:inline-flex;align-items:center;gap:7px;

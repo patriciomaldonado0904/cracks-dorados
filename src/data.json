@@ -1845,7 +1845,56 @@
    "gc": null,
    "dur": 80,
    "played": false,
-   "stats": {},
+   "stats": {
+    "esteban": {
+     "c": 1
+    },
+    "chalo": {
+     "c": 1
+    },
+    "gonzalo-fernandez": {
+     "c": 1
+    },
+    "hector-meli": {
+     "c": 1
+    },
+    "juan-pablo-flores": {
+     "c": 1
+    },
+    "luisfe-navarro": {
+     "c": 1
+    },
+    "rodrigo-villanueva": {
+     "c": 1
+    },
+    "felipe-diaz": {
+     "c": 1
+    },
+    "gato-espinoza": {
+     "c": 1
+    },
+    "guille-lizama": {
+     "c": 1
+    },
+    "wato-warner": {
+     "c": 1
+    },
+    "marcelo-hernandez": {
+     "c": 1
+    },
+    "pablo-griffith": {
+     "c": 1
+    },
+    "paulo-cecim": {
+     "c": 1
+    },
+    "renio-fabrega": {
+     "c": 1
+    },
+    "vicho-padilla": {
+     "c": 1
+    }
+   },
    "note": "Reprogramado (fecha 5 de la liga)"
   },
   {
@@ -1911,73 +1960,73 @@
   }
  ],
  "lineup": {
-  "matchId": "cl-p06",
+  "matchId": "cl-p07",
   "formation": "3-4-3",
   "slots": [
    {
     "x": 50,
     "y": 89,
-    "pid": "esteban",
+    "pid": null,
     "label": ""
    },
    {
-    "x": 37.1,
-    "y": 76.7,
-    "pid": "rodrigo-villanueva",
+    "x": 35.9,
+    "y": 63.7,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 59.3,
-    "y": 76.7,
-    "pid": "chalo",
+    "x": 65.1,
+    "y": 63.9,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 37.7,
-    "y": 16.9,
-    "pid": "pablo-griffith",
+    "x": 50.4,
+    "y": 15.9,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 24.3,
-    "y": 52,
-    "pid": "gato-espinoza",
+    "x": 21.4,
+    "y": 21.5,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 49.4,
-    "y": 55.8,
-    "pid": "felipe-diaz",
+    "x": 38.1,
+    "y": 47.9,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 10.8,
-    "y": 69.8,
-    "pid": "hector-meli",
+    "x": 12.3,
+    "y": 47.2,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 74.9,
-    "y": 54.2,
-    "pid": "titi-cerda",
+    "x": 63,
+    "y": 47.9,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 51.2,
-    "y": 39.9,
-    "pid": "renio-fabrega",
+    "x": 51.1,
+    "y": 32.7,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 62.1,
-    "y": 17.8,
-    "pid": "paulo-cecim",
+    "x": 79.5,
+    "y": 22.2,
+    "pid": null,
     "label": ""
    },
    {
-    "x": 87.6,
-    "y": 69.8,
-    "pid": "gonzalo-fernandez",
+    "x": 90.3,
+    "y": 47.4,
+    "pid": null,
     "label": ""
    }
   ],
