@@ -18,163 +18,163 @@
    "id": "esteban",
    "name": "Esteban",
    "num": null,
-   "pos": ""
+   "pos": "Arquero"
   },
   {
    "id": "cone",
    "name": "Cone",
    "num": null,
-   "pos": ""
+   "pos": "Arquero"
   },
   {
    "id": "luisfe-navarro",
    "name": "Luisfe Navarro",
    "num": null,
-   "pos": ""
+   "pos": "Defensa"
   },
   {
    "id": "rodrigo-granic",
    "name": "Rodrigo Granic",
    "num": null,
-   "pos": ""
+   "pos": "Defensa"
   },
   {
    "id": "chalo",
-   "name": "Chalo",
+   "name": "Chalo Tapia",
    "num": null,
-   "pos": ""
+   "pos": "Defensa"
   },
   {
    "id": "wato-warner",
    "name": "Wato Warner",
    "num": null,
-   "pos": ""
+   "pos": "Volante"
   },
   {
    "id": "andres-rebolledo",
    "name": "Andres Rebolledo",
    "num": null,
-   "pos": ""
+   "pos": "Volante"
   },
   {
    "id": "hector-meli",
    "name": "Héctor Meli",
    "num": null,
-   "pos": ""
+   "pos": "Defensa"
   },
   {
    "id": "gonzalo-fernandez",
    "name": "Gonzalo Fernandez",
    "num": null,
-   "pos": ""
+   "pos": "Defensa"
   },
   {
    "id": "rodrigo-villanueva",
    "name": "Rodrigo Villanueva",
    "num": null,
-   "pos": ""
+   "pos": "Defensa"
   },
   {
    "id": "juan-pablo-flores",
    "name": "Juan Pablo Flores",
    "num": null,
-   "pos": ""
+   "pos": "Defensa"
   },
   {
    "id": "juany",
    "name": "Juany",
    "num": null,
-   "pos": ""
+   "pos": "Volante"
   },
   {
    "id": "guille-lizama",
    "name": "Guille Lizama",
    "num": null,
-   "pos": ""
+   "pos": "Volante"
   },
   {
    "id": "marco",
-   "name": "Marco",
+   "name": "Marco Torrealba",
    "num": null,
-   "pos": ""
+   "pos": "Delantero"
   },
   {
    "id": "wander-guerra",
    "name": "Wander Guerra",
    "num": null,
-   "pos": ""
+   "pos": "Volante"
   },
   {
    "id": "felipe-diaz",
    "name": "Felipe Diaz",
    "num": null,
-   "pos": ""
+   "pos": "Volante"
   },
   {
    "id": "marcelo-hernandez",
    "name": "Marcelo Hernandez",
    "num": null,
-   "pos": ""
+   "pos": "Delantero"
   },
   {
    "id": "maja",
    "name": "Maja",
    "num": null,
-   "pos": ""
+   "pos": "Volante"
   },
   {
    "id": "gato-espinoza",
    "name": "Gato Espinoza",
    "num": null,
-   "pos": ""
+   "pos": "Volante"
   },
   {
    "id": "titi-cerda",
    "name": "Titi Cerda",
    "num": null,
-   "pos": ""
+   "pos": "Volante"
   },
   {
    "id": "manuel-neira",
    "name": "Manuel Neira",
    "num": null,
-   "pos": ""
+   "pos": "Delantero"
   },
   {
    "id": "vicho-padilla",
    "name": "Vicho Padilla",
    "num": null,
-   "pos": ""
+   "pos": "Delantero"
   },
   {
    "id": "ghazy-yarur",
    "name": "Ghazy Yarur",
    "num": null,
-   "pos": ""
+   "pos": "Delantero"
   },
   {
    "id": "renio-fabrega",
    "name": "Renio Fabrega",
    "num": null,
-   "pos": ""
+   "pos": "Delantero"
   },
   {
    "id": "titi-barrales",
    "name": "Titi Barrales",
    "num": null,
-   "pos": ""
+   "pos": "Delantero"
   },
   {
    "id": "pablo-griffith",
    "name": "Pablo Griffith",
    "num": null,
-   "pos": ""
+   "pos": "Delantero"
   },
   {
    "id": "paulo-cecim",
    "name": "Paulo Cecim",
    "num": null,
-   "pos": "",
+   "pos": "Delantero",
    "active": true
   }
  ],

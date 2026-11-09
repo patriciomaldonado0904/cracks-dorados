@@ -89,6 +89,10 @@ tbody tr{background:var(--surface);cursor:pointer}
 tbody tr:hover{background:var(--surface-2)}
 tbody tr:last-child td{border-bottom:0}
 td.name{font-weight:600}
+tr.grp{cursor:default}
+tr.grp td{background:var(--surface-2);font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);padding:8px 10px;border-left:4px solid var(--red)}
+tr.grp td small{font-family:var(--body);font-weight:600;font-size:12px;color:var(--muted);letter-spacing:0;text-transform:none;margin-left:6px}
+tr.grp:hover{background:inherit}
 .dorsal{display:inline-block;min-width:24px;font-family:var(--display);color:var(--muted);font-weight:700}
 .pct{display:inline-flex;align-items:center;gap:6px}
 .pct i{display:inline-block;width:46px;height:5px;border-radius:3px;background:var(--surface-2);overflow:hidden}
@@ -425,6 +429,8 @@ function vResumen(){
   <section class="panel"><h3>Últimos partidos</h3><div class="mlist">${[...tm.ms].sort((a,b)=>(a.date||"").localeCompare(b.date||"")).reverse().slice(0,4).map(matchCard).join("")}</div></section>`;
 }
 
+const POS_GROUPS=[["Arquero","Arqueros"],["Defensa","Defensas"],["Volante","Volantes"],["Delantero","Delanteros"],["","Sin posición"]];
+const posKey = p => p==="Mediocampista" ? "Volante" : (["Arquero","Defensa","Volante","Delantero"].includes(p) ? p : "");
 function vPlantel(){
   const A=agg(T);
   const cols=[["name","Jugador"],["conv","Conv."],["pj","PJ"],["min","Min"],["pct","% min"],["prom","Prom"],["g","G"],["a","A"],["ta","TA"],["tr","TR"]];
@@ -435,13 +441,13 @@ function vPlantel(){
   ${pj?"":(played(T).length?`<div class="panel small muted">Los minutos de ${esc(tName(T))} aún no están cargados. Aparecerán aquí cuando el DT cargue cada partido.</div>`:emptyT())}
   <div class="tscroll"><table>
     <thead><tr>${cols.map(([k,n])=>`<th class="sortable${sort.k===k?" sorted":""}" data-sort="${k}">${n}${sort.k===k?(sort.d<0?" ↓":" ↑"):""}</th>`).join("")}</tr></thead>
-    <tbody>${rows.map(r=>`<tr data-j="${r.p.id}">
+    <tbody>${POS_GROUPS.map(([pos,label])=>{ const g=rows.filter(r=>posKey(r.p.pos)===pos); return g.length?`<tr class="grp"><td colspan="10">${label}<small>${g.length}</small></td></tr>`+g.map(r=>`<tr data-j="${r.p.id}">
       <td class="name"><span class="dorsal">${r.p.num??""}</span>${esc(r.p.name)}${r.p.id===myId?" ★":""}</td>
       <td>${r.conv}</td><td>${r.pj}</td><td><b>${r.min}</b>${r.unk?`<sup class="muted" title="${r.unk} partido(s) con minutos sin registrar">*</sup>`:""}</td>
       <td><span class="pct">${Math.round(r.pct*100)}%<i><b style="width:${Math.min(100,r.pct*100).toFixed(0)}%"></b></i></span></td>
-      <td>${r.pj?Math.round(r.prom)+"′":"–"}</td><td>${r.g||"–"}</td><td>${r.a||"–"}</td><td>${r.ta||"–"}</td><td>${r.tr||"–"}</td></tr>`).join("")}</tbody>
+      <td>${r.pj?Math.round(r.prom)+"′":"–"}</td><td>${r.g||"–"}</td><td>${r.a||"–"}</td><td>${r.ta||"–"}</td><td>${r.tr||"–"}</td></tr>`).join(""):""; }).join("")}</tbody>
   </table></div>
-  <p class="note">Conv. = convocado al partido · PJ = partidos con minutos en cancha · % min = minutos jugados sobre los ${A.posible} posibles · Prom = minutos promedio por partido jugado · * convocado con minutos sin registrar.</p>`;
+  <p class="note">Ordenado por posición; dentro de cada línea, según la columna elegida. Conv. = convocado al partido · PJ = partidos con minutos en cancha · % min = minutos jugados sobre los ${A.posible} posibles · Prom = minutos promedio por partido jugado · * convocado con minutos sin registrar.</p>`;
 }
 
 function matchCard(m){
@@ -920,7 +926,7 @@ function slug(s){ return s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase()
 function openRoster(){
   const pl=[...D.players];
   const row=(p,i)=>`<tr data-i="${i}"><td><input type="text" class="nm" id="pn-${i}" value="${esc(p.name)}"></td><td><input type="number" class="nu" id="pu-${i}" min="0" max="99" value="${p.num??""}"></td>
-    <td><select class="po" id="pp-${i}" style="border:1px solid var(--line);background:var(--surface-2);border-radius:6px;padding:5px">${["","Arquero","Defensa","Mediocampista","Delantero"].map(o=>`<option ${o===(p.pos||"")?"selected":""} value="${o}">${o||"—"}</option>`).join("")}</select></td>
+    <td><select class="po" id="pp-${i}" style="border:1px solid var(--line);background:var(--surface-2);border-radius:6px;padding:5px">${["","Arquero","Defensa","Volante","Delantero"].map(o=>`<option ${o===(p.pos||"")?"selected":""} value="${o}">${o||"—"}</option>`).join("")}</select></td>
     <td style="text-align:center"><input type="checkbox" class="ac" id="pa-${i}" ${p.active!==false?"checked":""}></td></tr>`;
   $("#sheetRoot").innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-label="Editar plantel"><form class="card" id="rform">
     <div class="row"><h2>Plantel</h2><span class="spacer"></span><button type="button" class="btn ghost" data-x>Cerrar</button></div>
