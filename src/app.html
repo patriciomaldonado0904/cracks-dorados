@@ -264,6 +264,24 @@ main{padding-block:20px 40px!important}
 .tok.empty .nm{background:rgba(10,12,40,.5);font-weight:600}
 .tok.drag{z-index:6;cursor:grabbing}
 .tok.drag .shirt{transform:scale(1.18)}
+.oncegrid{display:grid;gap:16px;align-items:start}
+@media (min-width:860px){.oncegrid.withside{grid-template-columns:minmax(0,1fr) 280px}}
+.side{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:4px;align-content:start}
+@media (min-width:860px){.side{position:sticky;top:calc(70px + env(safe-area-inset-top,0px));max-height:calc(100vh - 90px);overflow-y:auto}}
+.side .shead{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.side .shead h3{margin:0}
+.sitem{display:grid;grid-template-columns:22px minmax(0,1fr) auto auto;gap:6px;align-items:center;padding:7px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.sitem:hover{border-color:var(--muted)}
+.sitem .nm{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sitem .st{font-size:11px;font-weight:700;color:var(--muted)}
+.sitem.on{border-color:var(--win);background:color-mix(in srgb,var(--win) 10%,var(--surface))}
+.sitem.on .st{color:var(--win)}
+.sitem.bn{border-color:var(--gold);background:color-mix(in srgb,var(--gold-fill) 14%,var(--surface))}
+.sitem.bn .st{color:var(--gold)}
+.sbtn{width:28px;height:28px;border-radius:6px;border:1px solid var(--line);background:var(--surface-2);font-weight:800;font-size:12px;cursor:pointer;color:var(--muted)}
+.sitem.bn .sbtn{background:var(--gold-fill);color:#141845;border-color:var(--gold-fill)}
+.sghost{position:fixed;z-index:50;pointer-events:none;transform:translate(-50%,-50%);background:var(--navy);color:var(--navy-ink);padding:6px 12px;border-radius:999px;font-weight:700;font-size:13px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.tok.drop .shirt{transform:scale(1.25)}
 .bench{display:flex;flex-wrap:wrap;gap:6px}
 .bench .chip2{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 10px;font-size:13px;font-weight:600;cursor:pointer}
 .picklist{display:grid;gap:4px;max-height:52vh;overflow-y:auto}
@@ -574,8 +592,8 @@ function vOnce(){
     <label class="small muted" for="once-form">Formación</label><select id="once-form">${Object.keys(FORMS).map(f=>`<option ${f===L.formation?"selected":""}>${f}</option>`).join("")}</select>
     <span class="spacer"></span>
     <button class="btn" data-act="once-bench">Suplentes</button><button class="btn" data-act="once-clear">Vaciar cancha</button><button class="btn ghost" data-act="once-del" style="color:var(--red)">Borrar</button>
-  </div><p class="note">Toca una camiseta para elegir al jugador. Arrástrala para moverla en la cancha. Cuando termines, toca “Guardar y publicar”. ${n}/11 puestos completos.</p>`:""}
-  <div class="pitchwrap"><div class="pitch" id="pitch">${PITCH_LINES}${L.slots.map(tok).join("")}</div></div>
+  </div><p class="note">Toca un jugador de la lista de citados para ponerlo en la cancha (o arrástralo a una camiseta). Toca una camiseta para cambiarla y arrástrala para moverla. Cuando termines, toca “Guardar y publicar”. ${n}/11 puestos completos.</p>`:""}
+  <div class="oncegrid${coach?" withside":""}"><div class="pitchwrap"><div class="pitch" id="pitch">${PITCH_LINES}${L.slots.map(tok).join("")}</div></div>${coach?sidePanel(L,m):""}</div>
   <section class="panel"><h3>Suplentes</h3>${bench.length?`<div class="bench">${bench.map(p=>`<span class="chip2" data-j="${p.id}">${p.num!=null?p.num+" · ":""}${esc(p.name)}</span>`).join("")}</div>`:`<p class="note">${coach?"Agrega los suplentes con el botón “Suplentes”.":"Sin suplentes publicados."}</p>`}
   ${L.note||coach?`<h3 style="margin-top:14px">Indicaciones</h3>${coach?`<input id="once-note" type="text" value="${esc(L.note||"")}" placeholder="Ej: citación 19:15, camiseta titular" style="width:100%;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:8px 10px">`:`<p>${esc(L.note)}</p>`}`:""}</section>`;
 }
@@ -848,6 +866,56 @@ function goalsDetail(m){
     ${seq.length?`<h3 style="margin-top:14px">Cómo se dio</h3><ol class="evlog">${seq.map(({x,gf,gc})=>`<li><b>${gf}–${gc}</b>${x.t==="r"?`<span class="muted">Gol de ${esc(m.rival)}</span>`:`⚽ ${esc((pById(x.pid)||{}).name||"?")}`}</li>`).join("")}</ol>`:""}
   </section>`;
 }
+
+/* ---------- 11 inicial: barra de citados ---------- */
+function sidePanel(L,m){
+  const cit = m ? Object.entries(m.stats||{}).filter(([,e])=>e.c).map(([id])=>id) : [];
+  const usingAll = !cit.length;
+  const pl = (usingAll ? D.players.filter(p=>p.active!==false) : cit.map(pById).filter(Boolean)).sort((a,b)=>a.name.localeCompare(b.name));
+  const onF = new Set(L.slots.map(x=>x.pid).filter(Boolean)), onB = new Set(L.bench||[]);
+  const nOn = pl.filter(p=>onF.has(p.id)).length;
+  const item = p=>{ const st=onF.has(p.id)?"on":onB.has(p.id)?"bn":"";
+    return `<div class="sitem ${st}" data-sp="${p.id}" title="${esc(p.name)}"><span class="dorsal">${p.num??""}</span><span class="nm">${esc(p.name)}</span><span class="st">${st==="on"?"En cancha":st==="bn"?"Suplente":""}</span><button type="button" class="sbtn" data-sb="${p.id}" title="Suplente" aria-label="Suplente: ${esc(p.name)}">S</button></div>`; };
+  return `<aside class="side" aria-label="Citados"><div class="shead"><h3>${usingAll?"Plantel":"Citados"} · ${pl.length}</h3><span class="spacer"></span><span class="small muted">${nOn}/11</span></div>
+    ${usingAll?`<p class="note" style="margin:0 0 6px">${m?"Este partido aún no tiene citación: muestro todo el plantel.":"Elige un partido para ver sus citados."}${m?` <button type="button" class="btn ghost small" data-act="edit" data-id="${m.id}" style="padding:2px 6px">Citar jugadores</button>`:""}</p>`:""}
+    ${byPos(pl,item,(label,g)=>`<div class="pickgrp">${label}<small>${g.length}</small></div>`)}
+    <p class="note" style="margin:6px 0 0">Toca para poner o sacar de la cancha · <b>S</b> = suplente</p></aside>`;
+}
+function placeInSlot(pid,i){ const L=D.lineup; const cur=L.slots.findIndex(x=>x.pid===pid); const prev={pid:L.slots[i].pid,label:L.slots[i].label};
+  if(cur>=0&&cur!==i){ L.slots[cur].pid=prev.pid; L.slots[cur].label=prev.pid?"":prev.label; }
+  L.slots[i].pid=pid; L.slots[i].label=""; L.bench=(L.bench||[]).filter(x=>x!==pid); }
+function toggleField(pid){
+  const L=D.lineup, p=pById(pid); const cur=L.slots.findIndex(x=>x.pid===pid);
+  if(cur>=0){ L.slots[cur].pid=null; L.slots[cur].label=""; render(); onceDirty(p.name+" fuera de la cancha"); return; }
+  const empty=i=>!L.slots[i].pid&&!L.slots[i].label;
+  let i=-1; if(posKey(p.pos)==="Arquero"&&empty(0)) i=0;
+  if(i<0) for(let k=1;k<L.slots.length;k++) if(empty(k)){ i=k; break; }
+  if(i<0&&empty(0)) i=0;
+  if(i<0){ toast("La cancha ya tiene 11. Saca a alguien o toca una camiseta para cambiarlo."); return; }
+  placeInSlot(pid,i); render(); onceDirty(p.name+" a la cancha");
+}
+function toggleBenchP(pid){ const L=D.lineup, p=pById(pid); const cur=L.slots.findIndex(x=>x.pid===pid);
+  if(cur>=0){ L.slots[cur].pid=null; L.slots[cur].label=""; }
+  L.bench=L.bench||[]; if(L.bench.includes(pid)) L.bench=L.bench.filter(x=>x!==pid); else L.bench.push(pid);
+  render(); onceDirty(L.bench.includes(pid)?p.name+" a suplentes":p.name+" fuera de suplentes"); }
+let sdrag=null;
+$("#main").addEventListener("pointerdown",e=>{
+  const it=e.target.closest(".sitem"); if(!it||!coach||!D.lineup||e.target.closest(".sbtn")) return;
+  sdrag={pid:it.dataset.sp,sx:e.clientX,sy:e.clientY,moved:false,mouse:e.pointerType!=="touch",ghost:null,over:null};
+});
+addEventListener("pointermove",e=>{
+  if(!sdrag||!sdrag.mouse) return; if(!sdrag.moved&&Math.hypot(e.clientX-sdrag.sx,e.clientY-sdrag.sy)<8) return;
+  if(!sdrag.moved){ sdrag.moved=true; const g=document.createElement("div"); g.className="sghost"; g.textContent=pById(sdrag.pid).name; document.body.appendChild(g); sdrag.ghost=g; }
+  sdrag.ghost.style.left=e.clientX+"px"; sdrag.ghost.style.top=e.clientY+"px";
+  const t=document.elementFromPoint(e.clientX,e.clientY); const tk=t&&t.closest(".tok"); if(sdrag.over&&sdrag.over!==tk) sdrag.over.classList.remove("drop"); if(tk){ tk.classList.add("drop"); } sdrag.over=tk;
+});
+addEventListener("pointerup",e=>{
+  if(!sdrag) return; const d=sdrag; sdrag=null; if(d.ghost) d.ghost.remove(); if(d.over) d.over.classList.remove("drop");
+  if(!d.moved){ if(e.target.closest&&e.target.closest(".sitem")) toggleField(d.pid); return; }
+  if(d.over){ placeInSlot(d.pid,+d.over.dataset.slot); render(); onceDirty(pById(d.pid).name+" a la cancha"); }
+});
+addEventListener("pointercancel",()=>{ if(sdrag){ if(sdrag.ghost) sdrag.ghost.remove(); sdrag=null; } });
+$("#main").addEventListener("click",e=>{ const b=e.target.closest(".sbtn"); if(!b||!coach||!D.lineup) return; e.stopPropagation(); toggleBenchP(b.dataset.sb); });
 
 /* ---------- clicks ---------- */
 $("#main").addEventListener("click", e=>{

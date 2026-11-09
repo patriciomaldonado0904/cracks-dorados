@@ -2030,9 +2030,7 @@
     "label": ""
    }
   ],
-  "bench": [
-   "wander-guerra"
-  ],
+  "bench": [],
   "note": ""
  },
  "warmup": {
