@@ -2169,63 +2169,98 @@
    "fecha": 10,
    "rival": "U. Sta. Mónica",
    "date": "2026-11-25",
-   "gf": null,
-   "gc": null,
+   "gf": 2,
+   "gc": 1,
    "dur": 80,
-   "played": false,
+   "played": true,
    "stats": {
     "esteban": {
-     "c": 1
+     "c": 1,
+     "min": 80
     },
     "chalo": {
-     "c": 1
+     "c": 1,
+     "min": 80
     },
     "gonzalo-fernandez": {
-     "c": 1
+     "c": 1,
+     "min": 80
     },
     "hector-meli": {
-     "c": 1
+     "c": 1,
+     "min": 80
     },
     "juan-pablo-flores": {
-     "c": 1
+     "c": 1,
+     "min": 80
     },
     "rodrigo-villanueva": {
-     "c": 1
+     "c": 1,
+     "min": 40
     },
     "andres-rebolledo": {
-     "c": 1
+     "c": 1,
+     "min": 10
     },
     "felipe-diaz": {
-     "c": 1
+     "c": 1,
+     "min": 80
     },
     "gato-espinoza": {
-     "c": 1
+     "c": 1,
+     "min": 0
     },
     "guille-lizama": {
-     "c": 1
+     "c": 1,
+     "min": 30
     },
     "maja": {
-     "c": 1
+     "c": 1,
+     "min": 20
     },
     "wato-warner": {
-     "c": 1
+     "c": 1,
+     "min": 70
     },
     "marcelo-hernandez": {
-     "c": 1
+     "c": 1,
+     "min": 70
     },
     "pablo-griffith": {
-     "c": 1
+     "c": 1,
+     "min": 30
     },
     "paulo-cecim": {
      "c": 1
     },
     "renio-fabrega": {
-     "c": 1
+     "c": 1,
+     "min": 20
     },
     "vicho-padilla": {
-     "c": 1
+     "c": 1,
+     "min": 70,
+     "g": 2
     }
-   }
+   },
+   "live": false,
+   "events": [
+    {
+     "t": "r",
+     "pid": null,
+     "min": 10
+    },
+    {
+     "t": "g",
+     "pid": "vicho-padilla",
+     "min": 11
+    },
+    {
+     "t": "g",
+     "pid": "vicho-padilla",
+     "min": 25
+    }
+   ]
   },
   {
    "id": "cl-p11",
@@ -2342,7 +2377,7 @@
     "k": 1,
     "min": 3,
     "items": [
-     "- Desplazamientos para ir aumentando la temperatura corporal."
+     "- Desplazamientos con y sin balón para ir aumentando la temperatura corporal."
     ]
    },
    {
@@ -2361,15 +2396,14 @@
      "Puente de glúteo ×12",
      "Plancha lateral 15 s por lado",
      "Copenhague corto ×4 por lado",
-     "Elevación de talones ×15"
+     "saltos pogo ×15"
     ]
    },
    {
     "k": 4,
     "min": 5,
     "items": [
-     "Pases en parejas con desplazamiento",
-     "Rondo 5 vs 2"
+     "Pases en parejas con desplazamiento"
     ]
    },
    {
@@ -2382,6 +2416,6 @@
     ]
    }
   ],
-  "note": "- 21:05 inicia el calentamiento, 21:10 se espera a los jugadores que aparezcan en el 11 inicial."
+  "note": "- 21:00 inicia el calentamiento, 21:10 se espera a los jugadores que aparezcan en el 11 inicial."
  }
 }
